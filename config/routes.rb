@@ -1,5 +1,5 @@
 Snippet::Application.routes.draw do
-  root 'welcome.html'
+  root :to => redirect('/welcome.html')
 
 
 end
