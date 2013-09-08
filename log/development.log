@@ -4,3 +4,6 @@ Started GET "/" for 127.0.0.1 at 2013-09-06 13:37:48 -1000
 Processing by Rails::WelcomeController#index as HTML
   Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.0/lib/rails/templates/rails/welcome/index.html.erb (1.4ms)
 Completed 200 OK in 26ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (27.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (74.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
