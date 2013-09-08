@@ -11,6 +11,10 @@ gem 'devise'
 # Use postgresql as the database
 gem 'pg'
 
+# Add heroku support
+gem 'rails_12factor', group: :production
+ruby "2.0.0"
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
