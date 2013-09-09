@@ -3,6 +3,7 @@ class CreateMessages < ActiveRecord::Migration
     create_table :messages do |t|
       t.string :content
       t.integer :user_id
+      t.integer :contact_id
       t.integer :song_id
       t.boolean :sent
 
