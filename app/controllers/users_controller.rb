@@ -11,6 +11,11 @@ class UsersController < ApplicationController
 
   # All messages belonging to a user
   def messages
-    render json: Message.find_by_user_id(params[:id])
+    # If a contact id was specified, show only messages with that user
+    if (contact_id = params[:contact_id]) then
+      render json: Message.where(user_id: params[:id], contact_id: contact_id)
+    else
+      render json: Message.where(user_id: params[:id])
+    end
   end
 end

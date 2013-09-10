@@ -5,14 +5,9 @@ Snippet::Application.routes.draw do
   # Get songs in a specific category
   get 'categories/:id/songs', to: 'categories#songs'
 
-  # Get a specific song
-  get 'songs/:id', to: 'songs#show'
-
-  # Get a specific user
-  get 'users/:id', to: 'users#show'
-
   # Get all messages for a user
-  get 'users/:id/messages', to: 'users#messages'
+  # Optional: append another user's id (contact_id) to get interactions with only that user
+  get 'users/:id/messages(/:contact_id)', to: 'users#messages'
 
   # Default routing
   get ':controller(/:action(/:id))'
