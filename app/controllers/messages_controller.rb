@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
   def new
     # Only respond to post requests
     unless request.post?
-      render json: 'Error: Must be post request'
+      render json: {:success => false, :message => 'Error: Must be post request'}
       return
     end
 
@@ -25,6 +25,6 @@ class MessagesController < ApplicationController
     received = Message.create(:content => content, :user_id => dst, :contact_id => src, :song_id => song, :sent => false)
 
     # Return true if successful or false otherwise
-    render json: (sent.valid? && received.valid?)
+    render json: {:success => (sent.valid? && received.valid?)}
   end
 end
