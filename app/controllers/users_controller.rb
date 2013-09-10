@@ -11,13 +11,19 @@ class UsersController < ApplicationController
 
   # Create a new user
   def new
-    user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password])
-    result = user.save
+    # Only respond to post requests
+    unless request.post?
+      render json: {:success => false, :errors => {:request => ['Must be post request']}}
+      return
+    end
 
-    if result
-      render json: {:success => result, :user => user}
+    user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password])
+
+    # Return the user details if successful and the error messages if unsuccessful
+    if user.save
+      render json: {success: true, user: user.as_json(only: [:authentication_token, :id, :email])}
     else
-      render json: {:success => result, :errors => user.errors.messages}
+      render json: {:success => false, :errors => user.errors.messages}
     end
 
   end

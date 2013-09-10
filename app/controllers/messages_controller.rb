@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
   def new
     # Only respond to post requests
     unless request.post?
-      render json: {:success => false, :message => 'Error: Must be post request'}
+      render json: {:success => false, :errors => {:request => ['Must be post request']}}
       return
     end
 
@@ -18,6 +18,8 @@ class MessagesController < ApplicationController
     content = params[:content]
     song = params[:song_id]
 
+    # TODO: handle case when sending to a person without an account
+
     # Create a copy for the sender
     sent = Message.create(:content => content, :user_id => src, :contact_id => dst, :song_id => song, :sent => true)
 
@@ -25,6 +27,13 @@ class MessagesController < ApplicationController
     received = Message.create(:content => content, :user_id => dst, :contact_id => src, :song_id => song, :sent => false)
 
     # Return true if successful or false otherwise
-    render json: {:success => (sent.valid? && received.valid?)}
+    if sent.valid? && received.valid?
+      render json: {:success => true}
+    else
+      # Combine and display errors from both messages
+      render json: {:success => false, :errors => sent.errors.messages.merge(received.errors.messages)}
+    end
   end
 end
+
+
