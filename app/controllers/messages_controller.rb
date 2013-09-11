@@ -6,12 +6,6 @@ class MessagesController < ApplicationController
 
   # Create a new message
   def new
-    # Only respond to post requests
-    unless request.post?
-      render json: {:success => false, :errors => {:request => ['Must be post request']}}
-      return
-    end
-
     # Get message details from post parameters
     src = params[:src_id]
     dst = params[:dst_id]

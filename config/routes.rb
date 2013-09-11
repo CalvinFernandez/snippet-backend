@@ -8,10 +8,10 @@ Snippet::Application.routes.draw do
   # Optional: append another user's id (contact_id) to get interactions with only that user
   get 'users/:id/messages(/:contact_id)', to: 'users#messages'
 
+  # Use the sessions controller for login and logout
+  devise_for(:users, controllers: { sessions: 'sessions' }, :sign_out_via => [:post, :delete])
+
   # Default routing. Accepts all html verb types
   match ':controller(/:action(/:id))', via: :all
-
-
-
 
 end

@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  skip_before_action :require_login, only: :new
+
   # List all users
   def all
     render json: User.all
@@ -11,21 +14,14 @@ class UsersController < ApplicationController
 
   # Create a new user
   def new
-    # Only respond to post requests
-    unless request.post?
-      render json: {:success => false, :errors => {:request => ['Must be post request']}}
-      return
-    end
-
     user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password])
 
     # Return the user details if successful and the error messages if unsuccessful
     if user.save
-      render json: {success: true, user: user.as_json(only: [:authentication_token, :id, :email])}
+      render json: {success: true, user: user.as_json(only: [:authentication_token, :id, :email])}, status: 201
     else
-      render json: {:success => false, :errors => user.errors.messages}
+      render json: {:success => false, :errors => user.errors.messages}, status: 422
     end
-
   end
 
   # All messages belonging to a user
