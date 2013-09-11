@@ -31,8 +31,6 @@ POST request to /users/sign_out
 Must include the parameter 'email' of the account to be logged out
 A successful call to logout deletes the authentication token so that no further requests can be made using it.
 
-*************************************
-
 **** Users ****
 
 Get all users
@@ -46,7 +44,6 @@ All messages belonging to a user
 
 All messages between a user and a specific contact. Where contact_id is the user_id of the contact
 /users/:user_id/messages/:contact_id
-*************************************
 
 **** Messages ****
 
@@ -61,8 +58,6 @@ Parameters:
 'content' - The message body
 'song_id' - The song_id of a song to include. Leave this blank if the message is just text.
 
-*************************************
-
 **** Songs ****
 
 Show all songs
@@ -70,8 +65,6 @@ Show all songs
 
 A specific song
 /songs/show/:song_id
-
-*************************************
 
 **** Categories ****
 
