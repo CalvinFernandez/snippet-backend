@@ -1,4 +1,4 @@
-   API
+   API - Server is live at http://obscure-oasis-5519.herokuapp.com/
 -----------
 
 API endpoints for the snippet backend
