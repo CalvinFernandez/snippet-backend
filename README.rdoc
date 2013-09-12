@@ -60,7 +60,7 @@ Create a new message
 POST request to /messages/new
 Parameters: 
 'src_id' - The user_id of the sender
-'dst_id' - The user_id of the receiver. Leave this blank if the message is being sent to someone that doesn't yet have an account.
+'dst_email' - The email address of the receiver. This can be an address that doesn't yet have an account; An account will be created for them.
 'content' - The message body
 'song_id' - The song_id of a song to include. Leave this blank if the message is just text.
 

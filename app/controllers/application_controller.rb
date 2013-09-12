@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   # Require authentication with auth_token on each request
-  before_action :require_login
+  #before_action :require_login
 
   private
 
