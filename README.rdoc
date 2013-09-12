@@ -25,6 +25,12 @@ POST request to /users/sign_in with the parameters 'email' and 'password'
 On failure an error message is returned.
 On success the 'auth_token' and 'id' are returned. 'id' is the user_id of the signed in user, and 'auth_token' is the authorization token that needs to be included with each api call.
 
+Password Reset
+
+/users/:user_id/reset_password
+*Does NOT require authentication
+Sends an email to the user that allows them to reset their password
+
 Logout
 
 POST request to /users/sign_out
