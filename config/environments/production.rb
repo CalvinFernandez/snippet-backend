@@ -79,7 +79,7 @@ Snippet::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Devise mailer
-  config.action_mailer.default_url_options = { :host => 'smtpout.secureserver.net' }
+  config.action_mailer.default_url_options = { :host => 'lyricoo.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :address              => "smtpout.secureserver.net",

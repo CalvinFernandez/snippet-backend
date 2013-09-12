@@ -7432,3 +7432,95 @@ Content-Transfer-Encoding: 7bit
 
   [1m[36m (7.1ms)[0m  [1mCOMMIT[0m
 Completed 201 Created in 2507ms (Views: 1.1ms | ActiveRecord: 18.1ms)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+  [1m[36m (33.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (66.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20130908231728)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (87.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "authentication_token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (46.7ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (56.6ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (56.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_authentication_token" ON "users" ("authentication_token")
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130908231728"]]
+  [1m[35m (20.6ms)[0m  COMMIT
+Migrating to CreateSongs (20130909010258)
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (94.0ms)[0m  CREATE TABLE "songs" ("id" serial primary key, "title" character varying(255), "artist" character varying(255), "category_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909010258"]]
+  [1m[35m (21.3ms)[0m  COMMIT
+Migrating to CreateMessages (20130909014927)
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (52.2ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "content" character varying(255), "user_id" integer, "contact_id" integer, "song_id" integer, "sent" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909014927"]]
+  [1m[35m (12.6ms)[0m  COMMIT
+Migrating to CreateCategories (20130909225440)
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (44.7ms)[0m  CREATE TABLE "categories" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909225440"]]
+  [1m[35m (20.7ms)[0m  COMMIT
+Migrating to TestData (20130910030936)
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Thu, 12 Sep 2013 05:26:48 UTC +00:00], ["name", "Greetings"], ["updated_at", Thu, 12 Sep 2013 05:26:48 UTC +00:00]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Thu, 12 Sep 2013 05:26:48 UTC +00:00], ["name", "Christmas"], ["updated_at", Thu, 12 Sep 2013 05:26:48 UTC +00:00]]
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Thu, 12 Sep 2013 05:26:48 UTC +00:00], ["name", "Good Morning"], ["updated_at", Thu, 12 Sep 2013 05:26:48 UTC +00:00]]
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Yummy Yummies"], ["category_id", 1], ["created_at", Thu, 12 Sep 2013 05:26:48 UTC +00:00], ["title", "How are you today?"], ["updated_at", Thu, 12 Sep 2013 05:26:48 UTC +00:00]]
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["artist", "Bing Crosby"], ["category_id", 2], ["created_at", Thu, 12 Sep 2013 05:26:48 UTC +00:00], ["title", "Mele Kalikimaka"], ["updated_at", Thu, 12 Sep 2013 05:26:48 UTC +00:00]]
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Beatles"], ["category_id", 3], ["created_at", Thu, 12 Sep 2013 05:26:48 UTC +00:00], ["title", "Here comes the sun"], ["updated_at", Thu, 12 Sep 2013 05:26:48 UTC +00:00]]
+  [1m[35mUser Exists (1.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = 'eaJ4sbysep2vFfMj7zQZ' LIMIT 1[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "users" ("authentication_token", "created_at", "email", "encrypted_password", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["authentication_token", "eaJ4sbysep2vFfMj7zQZ"], ["created_at", Thu, 12 Sep 2013 05:26:49 UTC +00:00], ["email", "test@example.com"], ["encrypted_password", "$2a$10$5aVsJEavCDC/lUnOAlO.J.k79vtWjqHAQwWs0XUKOadRc.or3AwW2"], ["updated_at", Thu, 12 Sep 2013 05:26:49 UTC +00:00]]
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 2], ["content", "My message content"], ["created_at", Thu, 12 Sep 2013 05:26:49 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Thu, 12 Sep 2013 05:26:49 UTC +00:00], ["user_id", 1]]
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["contact_id", 2], ["content", "Bite my shiny metal ass"], ["created_at", Thu, 12 Sep 2013 05:26:49 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Thu, 12 Sep 2013 05:26:49 UTC +00:00], ["user_id", 1]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 3], ["content", "Bae caught me sleeping"], ["created_at", Thu, 12 Sep 2013 05:26:49 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Thu, 12 Sep 2013 05:26:49 UTC +00:00], ["user_id", 1]]
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130910030936"]]
+  [1m[36m (9.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+
+
+Started POST "/users/new" for 127.0.0.1 at 2013-09-11 19:27:07 -1000
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  Parameters: {"email"=>"konakid@gmail.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mUser Exists (0.9ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'konakid@gmail.com' LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."authentication_token" = '4KXY7UyPFsek8nNxe_CK' LIMIT 1
+  [1m[36mSQL (4.5ms)[0m  [1mINSERT INTO "users" ("authentication_token", "created_at", "email", "encrypted_password", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["authentication_token", "4KXY7UyPFsek8nNxe_CK"], ["created_at", Thu, 12 Sep 2013 05:27:07 UTC +00:00], ["email", "konakid@gmail.com"], ["encrypted_password", "$2a$10$JXXg5KVjKDRFbFBVOySKKuES.acCIOU3Sdau6wrzob4TswIuElwza"], ["updated_at", Thu, 12 Sep 2013 05:27:07 UTC +00:00]]
+  [1m[35m (8.5ms)[0m  COMMIT
+Completed 201 Created in 196ms (Views: 0.4ms | ActiveRecord: 19.6ms)
+
+
+Started GET "/users/2/reset_password" for 127.0.0.1 at 2013-09-11 19:27:53 -1000
+Processing by UsersController#generate_new_password as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."reset_password_token" = '4b387542e81e3210483996a2d0fb88c082116d9d4a7faa7f4a093086267e858c' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  UPDATE "users" SET "reset_password_token" = $1, "reset_password_sent_at" = $2, "updated_at" = $3 WHERE "users"."id" = 2  [["reset_password_token", "4b387542e81e3210483996a2d0fb88c082116d9d4a7faa7f4a093086267e858c"], ["reset_password_sent_at", Thu, 12 Sep 2013 05:27:54 UTC +00:00], ["updated_at", Thu, 12 Sep 2013 05:27:54 UTC +00:00]]
+  [1m[36m (16.5ms)[0m  [1mCOMMIT[0m
+  Rendered devise/mailer/reset_password_instructions.html.erb (1.7ms)
+
+Sent mail to konakid@gmail.com (1280.0ms)
+Date: Wed, 11 Sep 2013 19:27:54 -1000
+From: accounts@lyricoo.com
+Reply-To: accounts@lyricoo.com
+To: konakid@gmail.com
+Message-ID: <523150da912ef_121f58b9174962c@eli-ubuntu.mail>
+Subject: Reset password instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello konakid@gmail.com!</p>
+
+<p>Someone has requested a link to change your password. You can do this through the link below.</p>
+
+<p><a href="http://smtpout.secureserver.net/users/password/edit?reset_password_token=NZ13L4Q8uv1baMEXKLhV">Change my password</a></p>
+
+<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>
+
+Completed 200 OK in 2283ms (Views: 0.6ms | ActiveRecord: 18.9ms)

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  skip_before_action :require_login, only: :new
+  skip_before_action :require_login, only: [:new, :generate_new_password]
 
   # List all users
   def all
@@ -32,5 +32,18 @@ class UsersController < ApplicationController
     else
       render json: Message.where(user_id: params[:id])
     end
+  end
+
+  def generate_new_password
+    # Send an email with instructs on how to reset the password
+    begin
+      user = User.find(params[:id])
+      if user.send_reset_password_instructions
+        render json: {success: true}
+      end
+    rescue
+      render json: {success: false}
+    end
+
   end
 end
