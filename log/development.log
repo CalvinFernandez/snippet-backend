@@ -6809,3 +6809,626 @@ Processing by UsersController#all as HTML
   [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = '-ibgefjRw6VSEj97VPg' LIMIT 1[0m
 Filter chain halted as :require_login rendered or redirected
 Completed 401 Unauthorized in 6ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+  [1m[36m (38.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (54.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20130908231728)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (82.3ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "authentication_token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (54.6ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (44.7ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (43.6ms)[0m  CREATE UNIQUE INDEX "index_users_on_authentication_token" ON "users" ("authentication_token")
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130908231728"]]
+  [1m[35m (16.8ms)[0m  COMMIT
+Migrating to CreateSongs (20130909010258)
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35m (102.4ms)[0m  CREATE TABLE "songs" ("id" serial primary key, "title" character varying(255), "artist" character varying(255), "category_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909010258"]]
+  [1m[35m (14.1ms)[0m  COMMIT
+Migrating to CreateMessages (20130909014927)
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (38.4ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "content" character varying(255), "user_id" integer, "contact_id" integer, "song_id" integer, "sent" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909014927"]]
+  [1m[35m (13.6ms)[0m  COMMIT
+Migrating to CreateCategories (20130909225440)
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (34.1ms)[0m  CREATE TABLE "categories" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909225440"]]
+  [1m[35m (13.3ms)[0m  COMMIT
+Migrating to TestData (20130910030936)
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (8.4ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Thu, 12 Sep 2013 04:59:01 UTC +00:00], ["name", "Greetings"], ["updated_at", Thu, 12 Sep 2013 04:59:01 UTC +00:00]]
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Thu, 12 Sep 2013 04:59:01 UTC +00:00], ["name", "Christmas"], ["updated_at", Thu, 12 Sep 2013 04:59:01 UTC +00:00]]
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Thu, 12 Sep 2013 04:59:01 UTC +00:00], ["name", "Good Morning"], ["updated_at", Thu, 12 Sep 2013 04:59:01 UTC +00:00]]
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Yummy Yummies"], ["category_id", 1], ["created_at", Thu, 12 Sep 2013 04:59:01 UTC +00:00], ["title", "How are you today?"], ["updated_at", Thu, 12 Sep 2013 04:59:01 UTC +00:00]]
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["artist", "Bing Crosby"], ["category_id", 2], ["created_at", Thu, 12 Sep 2013 04:59:01 UTC +00:00], ["title", "Mele Kalikimaka"], ["updated_at", Thu, 12 Sep 2013 04:59:01 UTC +00:00]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Beatles"], ["category_id", 3], ["created_at", Thu, 12 Sep 2013 04:59:01 UTC +00:00], ["title", "Here comes the sun"], ["updated_at", Thu, 12 Sep 2013 04:59:01 UTC +00:00]]
+  [1m[35mUser Exists (1.9ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = 'q1-23z_o-e4Nyafk2pZa' LIMIT 1[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "users" ("authentication_token", "created_at", "email", "encrypted_password", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["authentication_token", "q1-23z_o-e4Nyafk2pZa"], ["created_at", Thu, 12 Sep 2013 04:59:02 UTC +00:00], ["email", "test@example.com"], ["encrypted_password", "$2a$10$vEmagvUh0YEmsrPFlb18med14HycY2b0vz46OPhfcg4vTriaDMjPS"], ["updated_at", Thu, 12 Sep 2013 04:59:02 UTC +00:00]]
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 2], ["content", "My message content"], ["created_at", Thu, 12 Sep 2013 04:59:02 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Thu, 12 Sep 2013 04:59:02 UTC +00:00], ["user_id", 1]]
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["contact_id", 2], ["content", "Bite my shiny metal ass"], ["created_at", Thu, 12 Sep 2013 04:59:02 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Thu, 12 Sep 2013 04:59:02 UTC +00:00], ["user_id", 1]]
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 3], ["content", "Bae caught me sleeping"], ["created_at", Thu, 12 Sep 2013 04:59:02 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Thu, 12 Sep 2013 04:59:02 UTC +00:00], ["user_id", 1]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130910030936"]]
+  [1m[36m (20.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+
+
+Started POST "/users/new" for 127.0.0.1 at 2013-09-11 18:59:10 -1000
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  Parameters: {"email"=>"konakid@gmail.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.9ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'konakid@gmail.com' LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."authentication_token" = 'jgcodZkjCpHtmKXsC9n2' LIMIT 1
+  [1m[36mSQL (3.5ms)[0m  [1mINSERT INTO "users" ("authentication_token", "created_at", "email", "encrypted_password", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["authentication_token", "jgcodZkjCpHtmKXsC9n2"], ["created_at", Thu, 12 Sep 2013 04:59:10 UTC +00:00], ["email", "konakid@gmail.com"], ["encrypted_password", "$2a$10$uqXA6L76Kpcg7/8oC2Av7OYMnaeNS6a8J/gtHQZuFWQcviI5EHFRC"], ["updated_at", Thu, 12 Sep 2013 04:59:10 UTC +00:00]]
+  [1m[35m (52.8ms)[0m  COMMIT
+Completed 201 Created in 244ms (Views: 1.0ms | ActiveRecord: 59.9ms)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+
+
+Started GET "/users/passwords/new" for 127.0.0.1 at 2013-09-11 19:01:09 -1000
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+AbstractController::ActionNotFound (The action 'passwords' could not be found for UsersController):
+  actionpack (4.0.0) lib/abstract_controller/base.rb:131:in `process'
+  actionpack (4.0.0) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:655:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.0) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__791824045__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (2.0ms)
+
+
+Started GET "/users/passwords/edit" for 127.0.0.1 at 2013-09-11 19:01:13 -1000
+
+AbstractController::ActionNotFound (The action 'passwords' could not be found for UsersController):
+  actionpack (4.0.0) lib/abstract_controller/base.rb:131:in `process'
+  actionpack (4.0.0) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:655:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.0) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__791824045__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.4ms)
+
+
+Started GET "/users/passwords/update" for 127.0.0.1 at 2013-09-11 19:01:17 -1000
+
+AbstractController::ActionNotFound (The action 'passwords' could not be found for UsersController):
+  actionpack (4.0.0) lib/abstract_controller/base.rb:131:in `process'
+  actionpack (4.0.0) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:655:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.0) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__791824045__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at 2013-09-11 19:01:57 -1000
+Processing by Devise::PasswordsController#new as HTML
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 34ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/password/new?auth_token=jgcodZkjCpHtmKXsC9n2" for 127.0.0.1 at 2013-09-11 19:02:07 -1000
+Processing by Devise::PasswordsController#new as HTML
+  Parameters: {"auth_token"=>"jgcodZkjCpHtmKXsC9n2"}
+  [1m[35mUser Load (1.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."authentication_token" = 'jgcodZkjCpHtmKXsC9n2' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.6ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = 2  [["last_sign_in_at", Thu, 12 Sep 2013 05:02:07 UTC +00:00], ["current_sign_in_at", Thu, 12 Sep 2013 05:02:07 UTC +00:00], ["last_sign_in_ip", "127.0.0.1"], ["current_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", Thu, 12 Sep 2013 05:02:07 UTC +00:00]]
+  [1m[36m (42.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 281ms (ActiveRecord: 51.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-11 19:02:07 -1000
+
+
+Started GET "/users/password/new" for 127.0.0.1 at 2013-09-11 19:02:16 -1000
+Processing by Devise::PasswordsController#new as HTML
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 4ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/password/new&auth_token=jgcodZkjCpHtmKXsC9n2" for 127.0.0.1 at 2013-09-11 19:02:31 -1000
+
+AbstractController::ActionNotFound (The action 'password' could not be found for UsersController):
+  actionpack (4.0.0) lib/abstract_controller/base.rb:131:in `process'
+  actionpack (4.0.0) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:655:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.0) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__791824045__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started GET "/users/password/create&auth_token=jgcodZkjCpHtmKXsC9n2" for 127.0.0.1 at 2013-09-11 19:02:40 -1000
+
+AbstractController::ActionNotFound (The action 'password' could not be found for UsersController):
+  actionpack (4.0.0) lib/abstract_controller/base.rb:131:in `process'
+  actionpack (4.0.0) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:655:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.0) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__791824045__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started GET "/users/password/new&auth_token=jgcodZkjCpHtmKXsC9n2" for 127.0.0.1 at 2013-09-11 19:03:40 -1000
+
+AbstractController::ActionNotFound (The action 'password' could not be found for UsersController):
+  actionpack (4.0.0) lib/abstract_controller/base.rb:131:in `process'
+  actionpack (4.0.0) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:655:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.0) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__791824045__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started GET "/users/password/edit&auth_token=jgcodZkjCpHtmKXsC9n2" for 127.0.0.1 at 2013-09-11 19:03:43 -1000
+
+AbstractController::ActionNotFound (The action 'password' could not be found for UsersController):
+  actionpack (4.0.0) lib/abstract_controller/base.rb:131:in `process'
+  actionpack (4.0.0) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:655:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.0) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__791824045__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /home/eli/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+  [1m[36m (19.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (60.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20130908231728)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (99.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "authentication_token" character varying(255), "confirmation_token" character varying(255), "confirmed_at" timestamp, "confirmation_sent_at" timestamp, "unconfirmed_email" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (29.5ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (35.9ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (60.5ms)[0m  CREATE UNIQUE INDEX "index_users_on_authentication_token" ON "users" ("authentication_token")
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130908231728"]]
+  [1m[35m (13.0ms)[0m  COMMIT
+Migrating to CreateSongs (20130909010258)
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (95.6ms)[0m  CREATE TABLE "songs" ("id" serial primary key, "title" character varying(255), "artist" character varying(255), "category_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909010258"]]
+  [1m[35m (21.2ms)[0m  COMMIT
+Migrating to CreateMessages (20130909014927)
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (60.5ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "content" character varying(255), "user_id" integer, "contact_id" integer, "song_id" integer, "sent" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909014927"]]
+  [1m[35m (12.5ms)[0m  COMMIT
+Migrating to CreateCategories (20130909225440)
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (53.4ms)[0m  CREATE TABLE "categories" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909225440"]]
+  [1m[35m (20.8ms)[0m  COMMIT
+Migrating to TestData (20130910030936)
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.8ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00], ["name", "Greetings"], ["updated_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00]]
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00], ["name", "Christmas"], ["updated_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00]]
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00], ["name", "Good Morning"], ["updated_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00]]
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Yummy Yummies"], ["category_id", 1], ["created_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00], ["title", "How are you today?"], ["updated_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["artist", "Bing Crosby"], ["category_id", 2], ["created_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00], ["title", "Mele Kalikimaka"], ["updated_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00]]
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Beatles"], ["category_id", 3], ["created_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00], ["title", "Here comes the sun"], ["updated_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00]]
+  [1m[35mUser Exists (2.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = 'x9sUaT1JmBtQs4Sd1pbz' LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."confirmation_token" = 'fb11d1e0823d174ea77dfb6634fcbfc625f362255fbfbb61f4718f8e78c80649' LIMIT 1
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "users" ("authentication_token", "confirmation_sent_at", "confirmation_token", "created_at", "email", "encrypted_password", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["authentication_token", "x9sUaT1JmBtQs4Sd1pbz"], ["confirmation_sent_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00], ["confirmation_token", "fb11d1e0823d174ea77dfb6634fcbfc625f362255fbfbb61f4718f8e78c80649"], ["created_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00], ["email", "test@example.com"], ["encrypted_password", "$2a$10$b92PXiadO4g/MUgAzCmkY.kHvzO11Y/eogn4aQna0c9nQUl2.TAEq"], ["updated_at", Thu, 12 Sep 2013 05:06:23 UTC +00:00]]
+  Rendered devise/mailer/confirmation_instructions.html.erb (1.7ms)
+
+Sent mail to test@example.com (4726.9ms)
+Date: Wed, 11 Sep 2013 19:06:24 -1000
+From: devise@maqaw.com
+Reply-To: devise@maqaw.com
+To: test@example.com
+Message-ID: <52314bd042be1_10d74ccaf7a3572e@eli-ubuntu.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome test@example.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://smtpout.secureserver.net/users/confirmation?confirmation_token=jWwqBneEz4QzJMCb7Hqb">Confirm my account</a></p>
+
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["contact_id", 2], ["content", "My message content"], ["created_at", Thu, 12 Sep 2013 05:06:29 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Thu, 12 Sep 2013 05:06:29 UTC +00:00], ["user_id", 1]]
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 2], ["content", "Bite my shiny metal ass"], ["created_at", Thu, 12 Sep 2013 05:06:29 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Thu, 12 Sep 2013 05:06:29 UTC +00:00], ["user_id", 1]]
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["contact_id", 3], ["content", "Bae caught me sleeping"], ["created_at", Thu, 12 Sep 2013 05:06:29 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Thu, 12 Sep 2013 05:06:29 UTC +00:00], ["user_id", 1]]
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130910030936"]]
+  [1m[35m (22.5ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+
+
+Started POST "/users/new" for 127.0.0.1 at 2013-09-11 19:06:36 -1000
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  Parameters: {"email"=>"konakid@gmail.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.9ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'konakid@gmail.com' LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."authentication_token" = 'WvKENxDjpkqhu_89DnSk' LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."confirmation_token" = '1ba12cb4235b272f9f8ece99b31f6f96f8873cba563c5e09eb300dc58de32bfc' LIMIT 1[0m
+  [1m[35mSQL (3.8ms)[0m  INSERT INTO "users" ("authentication_token", "confirmation_sent_at", "confirmation_token", "created_at", "email", "encrypted_password", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["authentication_token", "WvKENxDjpkqhu_89DnSk"], ["confirmation_sent_at", Thu, 12 Sep 2013 05:06:37 UTC +00:00], ["confirmation_token", "1ba12cb4235b272f9f8ece99b31f6f96f8873cba563c5e09eb300dc58de32bfc"], ["created_at", Thu, 12 Sep 2013 05:06:36 UTC +00:00], ["email", "konakid@gmail.com"], ["encrypted_password", "$2a$10$EFswPRHcWD.D516TvO9Sve0VeloLjm2cuib8igf60krTVRoVfKh/a"], ["updated_at", Thu, 12 Sep 2013 05:06:36 UTC +00:00]]
+  Rendered devise/mailer/confirmation_instructions.html.erb (1.7ms)
+
+Sent mail to konakid@gmail.com (1312.5ms)
+Date: Wed, 11 Sep 2013 19:06:37 -1000
+From: devise@maqaw.com
+Reply-To: devise@maqaw.com
+To: konakid@gmail.com
+Message-ID: <52314bddc06db_10df4b29892630dc@eli-ubuntu.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome konakid@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://smtpout.secureserver.net/users/confirmation?confirmation_token=KQay8kcB8e-nsKbUExc3">Confirm my account</a></p>
+
+  [1m[36m (7.1ms)[0m  [1mCOMMIT[0m
+Completed 201 Created in 2507ms (Views: 1.1ms | ActiveRecord: 18.1ms)
