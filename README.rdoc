@@ -25,6 +25,12 @@ POST request to /users/sign_in with the parameters 'email' and 'password'
 On failure an error message is returned.
 On success the 'auth_token' and 'id' are returned. 'id' is the user_id of the signed in user, and 'auth_token' is the authorization token that needs to be included with each api call.
 
+Password Reset
+
+/users/:user_id/reset_password
+*Does NOT require authentication
+Sends an email to the user that allows them to reset their password
+
 Logout
 
 POST request to /users/sign_out
@@ -54,7 +60,7 @@ Create a new message
 POST request to /messages/new
 Parameters: 
 'src_id' - The user_id of the sender
-'dst_id' - The user_id of the receiver. Leave this blank if the message is being sent to someone that doesn't yet have an account.
+'dst_email' - The email address of the receiver. This can be an address that doesn't yet have an account; An account will be created for them.
 'content' - The message body
 'song_id' - The song_id of a song to include. Leave this blank if the message is just text.
 

@@ -8,6 +8,9 @@ Snippet::Application.routes.draw do
   # Optional: append another user's id (contact_id) to get interactions with only that user
   get 'users/:id/messages(/:contact_id)', to: 'users#messages'
 
+  # Password reset
+  get 'users/:id/reset_password', to: 'users#generate_new_password'
+
   # Use the sessions controller for login and logout
   devise_for(:users, controllers: { sessions: 'sessions' }, :sign_out_via => [:post, :delete])
 

@@ -1,0 +1,5 @@
+class TestData < ActiveRecord::Migration
+def change
+Song.create(title: Good Morning, artist: The Beatles, category: (Category.find_by! name: Greetings))
+end
+end
