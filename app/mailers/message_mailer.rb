@@ -1,8 +1,11 @@
 class MessageMailer < ActionMailer::Base
-  default from: "mailer@lyricoo.com"
+  default from: "Lyricoo <notifications@lyricoo.com>"
 
-  def new_message_notification(user)
-
-    mail(to: user.email, subject: 'Welcome to My Awesome Site')
+  def new_message_alert(src, dst, message)
+    @src = src
+    @dst = dst
+    @message = message
+    @song = Song.find(message.song_id)
+    mail(to: dst.email, subject: "#{src.email} send you a message!")
   end
 end

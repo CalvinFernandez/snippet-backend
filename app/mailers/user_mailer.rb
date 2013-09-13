@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "invite@lyricoo.com"
+  default from: "Lyricoo <invite@lyricoo.com>"
 
   def invitation(user, password, referrer, message)
     @user = user

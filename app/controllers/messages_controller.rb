@@ -27,8 +27,11 @@ class MessagesController < ApplicationController
     received = Message.create(content: content, user: contact, contact_id: src.id, song_id: song, sent: false)
 
     # If we created an account for the receiver, send them an email invitation
+    # Otherwise send them an alert that they have a new message
     if generated_password
       UserMailer.invitation(contact, generated_password, src, received).deliver
+    else
+      MessageMailer.new_message_alert(src, contact, received).deliver
     end
 
     # Return true if successful or false otherwise
