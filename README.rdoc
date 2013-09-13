@@ -1,28 +1,79 @@
-== README
+   API - Server is live at http://obscure-oasis-5519.herokuapp.com/
+-----------
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+API endpoints for the snippet backend
 
-Things you may want to cover:
+All endpoints, except those for account login and creation, require authentication
 
-* Ruby version
+If authentication fails, a 401 status code is returned as well as an error message. 
 
-* System dependencies
+For valid authentication, the authentication token received on login or account creation must be passed as the 'auth_token' parameter. For example, /users/all?auth_token=-ibgefjRw6VSEj97VPgx
 
-* Configuration
+**** Authorization ****
 
-* Database creation
+Create a new account
 
-* Database initialization
+POST request to /users/new with the parameters 'email' and 'password'.
+*Does NOT require authentication
+On failure the error messages are returned.
+On success a user object is returned which contains the user_id, email, and authentication_token.
 
-* How to run the test suite
+Login to an existing account
 
-* Services (job queues, cache servers, search engines, etc.)
+POST request to /users/sign_in with the parameters 'email' and 'password'
+*Does NOT require authentication
+On failure an error message is returned.
+On success the 'auth_token' and 'id' are returned. 'id' is the user_id of the signed in user, and 'auth_token' is the authorization token that needs to be included with each api call.
 
-* Deployment instructions
+Logout
 
-* ...
+POST request to /users/sign_out
+Must include the parameter 'email' of the account to be logged out
+A successful call to logout deletes the authentication token so that no further requests can be made using it.
+
+**** Users ****
+
+Get all users
+/users/all
+
+Details for a specific user
+/users/show/:user_id
+
+All messages belonging to a user
+/users/:user_id/messages
+
+All messages between a user and a specific contact. Where contact_id is the user_id of the contact
+/users/:user_id/messages/:contact_id
+
+**** Messages ****
+
+Get a specific message
+/messages/show/:message_id
+
+Create a new message
+POST request to /messages/new
+Parameters: 
+'src_id' - The user_id of the sender
+'dst_id' - The user_id of the receiver. Leave this blank if the message is being sent to someone that doesn't yet have an account.
+'content' - The message body
+'song_id' - The song_id of a song to include. Leave this blank if the message is just text.
+
+**** Songs ****
+
+Show all songs
+/songs/all
+
+A specific song
+/songs/show/:song_id
+
+**** Categories ****
+
+All categories
+/categories/all
+
+All songs in a specific category
+/categories/:category_id/all
+
+*************************************
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
