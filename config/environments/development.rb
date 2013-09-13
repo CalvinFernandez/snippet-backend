@@ -29,4 +29,12 @@ Snippet::Application.configure do
 
   # Mailer for devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :address              => "smtpout.secureserver.net",
+      :port                 => 25,
+      :user_name            => 'eli@lyricoo.com',
+      :password             => 'Lyricoomailer',
+      :authentication       => 'plain',
+      :enable_starttls_auto => true  }
 end
