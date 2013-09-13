@@ -8,7 +8,7 @@ class TestData < ActiveRecord::Migration
     Song.create(:title => 'Mele Kalikimaka', :artist => 'Bing Crosby', :category => cat2)
     Song.create(:title => 'Here comes the sun', :artist => 'The Beatles', :category => cat3)
 
-    user1 = User.create(:email => 'test@example.com', :password => 'password')
+    user1 = User.create(:email => 'test@example.com', :password => 'password', gender: 'male', first_name: 'eli', last_name: 'hart', age: 22)
 
 
     Message.create(:content => 'My message content', :user => user1, :contact_id => 2, :song_id => 1, :sent => true)
