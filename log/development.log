@@ -8838,3 +8838,8 @@ test@example.com says "asldfkasldfjk
     konakid@gmail.com also sent you a song - How are you today?
 
 Completed 200 OK in 1299ms (Views: 0.6ms | ActiveRecord: 45.6ms)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+
+
+Started GET "/" for 127.0.0.1 at 2013-09-13 09:31:06 -1000
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m

@@ -1,5 +1,5 @@
 Snippet::Application.routes.draw do
-  root :to => redirect('/welcome.html')
+  root :to => redirect('/docs.html')
 
   # Get songs in a specific category
   get 'categories/:id/songs', to: 'categories#songs'
