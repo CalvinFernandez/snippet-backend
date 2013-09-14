@@ -71,6 +71,15 @@ class UsersController < ApplicationController
     rescue
       render json: {success: false}
     end
+  end
 
+  def contacts
+    list = []
+    User.find(params[:id]).messages.each do |message|
+       if !list.index(message.contact_id)
+         list.push(message.contact_id)
+       end
+      render json: User.find(list)
+    end
   end
 end

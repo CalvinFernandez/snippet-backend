@@ -11,6 +11,9 @@ Snippet::Application.routes.draw do
   # Password reset
   get 'users/:id/reset_password', to: 'users#generate_new_password'
 
+  # Get contacts
+  get 'users/:id/contacts', to: 'users#contacts'
+
   # Use the sessions controller for login and logout
   devise_for(:users, controllers: { sessions: 'sessions' }, :sign_out_via => [:post, :delete])
 
