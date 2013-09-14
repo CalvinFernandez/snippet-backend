@@ -79,7 +79,7 @@ class UsersController < ApplicationController
        if !list.index(message.contact_id)
          list.push(message.contact_id)
        end
-      render json: User.find(list)
     end
+    render json: User.find(list).to_json(except: [:created_at, :updated_at])
   end
 end

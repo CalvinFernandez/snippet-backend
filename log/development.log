@@ -10132,3 +10132,95 @@ Processing by UsersController#contacts as HTML
   [1m[36mMessage Load (2.3ms)[0m  [1mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 1]]
   [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
 Completed 200 OK in 166ms (Views: 1.7ms | ActiveRecord: 13.7ms)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+  [1m[36m (26.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (75.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20130908231728)
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (85.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "age" integer, "gender" character varying(255), "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "authentication_token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (45.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (44.4ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (60.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_authentication_token" ON "users" ("authentication_token")
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130908231728"]]
+  [1m[35m (17.0ms)[0m  COMMIT
+Migrating to CreateSongs (20130909010258)
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (93.0ms)[0m  CREATE TABLE "songs" ("id" serial primary key, "title" character varying(255), "artist" character varying(255), "category_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909010258"]]
+  [1m[35m (15.7ms)[0m  COMMIT
+Migrating to CreateMessages (20130909014927)
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (49.1ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "content" character varying(255), "user_id" integer, "contact_id" integer, "song_id" integer, "sent" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909014927"]]
+  [1m[35m (15.4ms)[0m  COMMIT
+Migrating to CreateCategories (20130909225440)
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35m (41.6ms)[0m  CREATE TABLE "categories" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909225440"]]
+  [1m[35m (14.9ms)[0m  COMMIT
+Migrating to TestData (20130910030936)
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["name", "Greetings"], ["updated_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00]]
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["name", "Christmas"], ["updated_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00]]
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["name", "Love"], ["updated_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00]]
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Beatles"], ["category_id", 1], ["created_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["title", "Good Morning Good Morning"], ["updated_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00]]
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["artist", "The Beatles"], ["category_id", 3], ["created_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["title", "Two Of Us"], ["updated_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "Eric Clapton"], ["category_id", 3], ["created_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["title", "Wonderful Tonight"], ["updated_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00]]
+  [1m[35mUser Exists (2.0ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = '_kN2R6EKfvchbksWpAj5' LIMIT 1[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "users" ("age", "authentication_token", "created_at", "email", "encrypted_password", "first_name", "gender", "last_name", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["age", 22], ["authentication_token", "_kN2R6EKfvchbksWpAj5"], ["created_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["email", "test@example.com"], ["encrypted_password", "$2a$10$Jf8C/9cP/rCM7XxjKPY2E.VMK9hMOORi62bWVFBA6zY1tKzxbP9rO"], ["first_name", "eli"], ["gender", "male"], ["last_name", "hart"], ["updated_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00]]
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'chat@example.com' LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."authentication_token" = 'TTgL7h6Uf8tSTrj2sv7R' LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "users" ("age", "authentication_token", "created_at", "email", "encrypted_password", "first_name", "gender", "last_name", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["age", 22], ["authentication_token", "TTgL7h6Uf8tSTrj2sv7R"], ["created_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["email", "chat@example.com"], ["encrypted_password", "$2a$10$moekIxjOxJzuL87lUAcxJuso4l3h5uTommrD/D3fXQKpDHZfWjAqO"], ["first_name", "bobby"], ["gender", "male"], ["last_name", "hart"], ["updated_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00]]
+  [1m[35mUser Exists (0.8ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'me@example.com' LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = 'vmhAh-j8m_c6WFu-jg5G' LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "users" ("age", "authentication_token", "created_at", "email", "encrypted_password", "first_name", "gender", "last_name", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["age", 19], ["authentication_token", "vmhAh-j8m_c6WFu-jg5G"], ["created_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["email", "me@example.com"], ["encrypted_password", "$2a$10$mSrORe9gTcFq5bzdf.hL4uEoZvEFqGae6ckYP1C34Z1MVOYwWtoaS"], ["first_name", "elizabeth"], ["gender", "female"], ["last_name", "Swanson"], ["updated_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00]]
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 2], ["content", "My message content"], ["created_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["user_id", 1]]
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["contact_id", 3], ["content", "Bite my shiny metal ass"], ["created_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["sent", true], ["song_id", 2], ["updated_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["user_id", 1]]
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 1], ["content", "Bae caught me sleeping"], ["created_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["sent", true], ["song_id", 3], ["updated_at", Sat, 14 Sep 2013 21:00:58 UTC +00:00], ["user_id", 2]]
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130910030936"]]
+  [1m[36m (7.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+
+
+Started GET "/users/1/contacts" for 127.0.0.1 at 2013-09-14 11:01:05 -1000
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#contacts as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (2.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mMessage Load (2.3ms)[0m  [1mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (2, 3)[0m
+Completed 500 Internal Server Error in 161ms
+
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  app/controllers/users_controller.rb:82:in `block in contacts'
+  app/controllers/users_controller.rb:78:in `contacts'
+
+
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.1ms)
+
+
+Started GET "/users/1/contacts" for 127.0.0.1 at 2013-09-14 11:02:08 -1000
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+Processing by UsersController#contacts as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mMessage Load (0.6ms)[0m  [1mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IN (2, 3)
+Completed 200 OK in 108ms (Views: 1.3ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/users/1/contacts" for 127.0.0.1 at 2013-09-14 11:02:48 -1000
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+Processing by UsersController#contacts as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mMessage Load (0.6ms)[0m  SELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1  [["user_id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (2, 3)[0m
+Completed 200 OK in 81ms (Views: 0.1ms | ActiveRecord: 7.3ms)
