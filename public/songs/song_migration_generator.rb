@@ -25,7 +25,7 @@ CatFunction
   file_names.each do |f|
     # File is of the form song_title#artist_name#category_name.mp3
     # Remove .mp3 and split title, artist, and category into an array
-    info = f.chomp('.mp3').split('#')
+    info = f.chomp('.mp3').split('-')
 
     # Replace underscores with spaces, and make sure only the first
     # letter of each word is capitalized

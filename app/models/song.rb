@@ -6,8 +6,8 @@ class Song < ActiveRecord::Base
     artist = self.artist.downcase.gsub(' ', '_')
     category = self.category.name.downcase.gsub(' ', '_')
 
-    file_name = "#{title}##{artist}##{category}.mp3"
+    file_name = "#{title}-#{artist}-#{category}.mp3"
 
-    (Rails.root + "/songs/#{file_name}").to_s
+    "/songs/#{file_name}"
   end
 end
