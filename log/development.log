@@ -9460,3 +9460,58 @@ Processing by UsersController#messages as HTML
   Parameters: {"id"=>"1"}
   [1m[35mMessage Load (0.7ms)[0m  SELECT "messages".* FROM "messages" WHERE "messages"."user_id" = 1
 Completed 200 OK in 30ms (Views: 0.1ms | ActiveRecord: 3.3ms)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+  [1m[36m (33.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (67.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20130908231728)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (134.1ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "age" integer, "gender" character varying(255), "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "authentication_token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (45.4ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (35.9ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (43.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_authentication_token" ON "users" ("authentication_token")
+  [1m[36mSQL (1.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130908231728"]]
+  [1m[35m (5.5ms)[0m  COMMIT
+Migrating to CreateSongs (20130909010258)
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (79.8ms)[0m  CREATE TABLE "songs" ("id" serial primary key, "title" character varying(255), "artist" character varying(255), "category_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909010258"]]
+  [1m[35m (21.6ms)[0m  COMMIT
+Migrating to CreateMessages (20130909014927)
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (60.1ms)[0m  CREATE TABLE "messages" ("id" serial primary key, "content" character varying(255), "user_id" integer, "contact_id" integer, "song_id" integer, "sent" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909014927"]]
+  [1m[35m (21.2ms)[0m  COMMIT
+Migrating to CreateCategories (20130909225440)
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (52.4ms)[0m  CREATE TABLE "categories" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20130909225440"]]
+  [1m[35m (20.8ms)[0m  COMMIT
+Migrating to TestData (20130910030936)
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.6ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00], ["name", "Greetings"], ["updated_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00], ["name", "Christmas"], ["updated_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00]]
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00], ["name", "Good Morning"], ["updated_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00]]
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Yummy Yummies"], ["category_id", 1], ["created_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00], ["title", "How are you today?"], ["updated_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00]]
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["artist", "Bing Crosby"], ["category_id", 2], ["created_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00], ["title", "Mele Kalikimaka"], ["updated_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00]]
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "songs" ("artist", "category_id", "created_at", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["artist", "The Beatles"], ["category_id", 3], ["created_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00], ["title", "Here comes the sun"], ["updated_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00]]
+  [1m[35mUser Exists (2.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."authentication_token" = 'h5xKWUdL8FKUnQAT5apR' LIMIT 1[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "users" ("age", "authentication_token", "created_at", "email", "encrypted_password", "first_name", "gender", "last_name", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"  [["age", 22], ["authentication_token", "h5xKWUdL8FKUnQAT5apR"], ["created_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00], ["email", "test@example.com"], ["encrypted_password", "$2a$10$sWPrisuGlSFgf3lZ0k1Fn.RwGmGVdaMugG/97hkLDz0ourQU0/4X6"], ["first_name", "eli"], ["gender", "male"], ["last_name", "hart"], ["updated_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00]]
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 2], ["content", "My message content"], ["created_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00], ["user_id", 1]]
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["contact_id", 2], ["content", "Bite my shiny metal ass"], ["created_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00], ["user_id", 1]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 3], ["content", "Bae caught me sleeping"], ["created_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Sat, 14 Sep 2013 19:58:51 UTC +00:00], ["user_id", 1]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20130910030936"]]
+  [1m[36m (11.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+
+
+Started GET "/songs/all" for 127.0.0.1 at 2013-09-14 09:59:04 -1000
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SongsController#all as HTML
+  [1m[35mSong Load (0.3ms)[0m  SELECT "songs".* FROM "songs"
+  [1m[36mCategory Load (3.1ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 ORDER BY "categories"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCategory Load (0.6ms)[0m  SELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 ORDER BY "categories"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 ORDER BY "categories"."id" ASC LIMIT 1[0m  [["id", 3]]
+Completed 200 OK in 79ms (Views: 0.1ms | ActiveRecord: 11.3ms)
