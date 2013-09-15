@@ -1,0 +1,5 @@
+<%=@src.email%> says "<%=@message.content%>
+
+<% if @song %>
+    <%= @dst.email %> also sent you a song - <%= @song.title %>
+<% end %>

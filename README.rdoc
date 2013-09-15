@@ -51,6 +51,15 @@ All messages belonging to a user
 All messages between a user and a specific contact. Where contact_id is the user_id of the contact
 /users/:user_id/messages/:contact_id
 
+Update a user's info. Email address cannot be changed. Password must be changed with /users/:user_id/reset_password
+/users/update
+Parameters:
+'id' - the user's id
+'first_name'
+'last_name'
+'gender' - Either 'male' or 'female'
+'age'
+
 **** Messages ****
 
 Get a specific message

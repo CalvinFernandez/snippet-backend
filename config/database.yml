@@ -18,7 +18,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: snippet_development
+  database: snippet_test
   pool: 5
   timeout: 5000
   username: eli
@@ -27,7 +27,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: snippet_test
+  database: snippet_production
   pool: 5
   timeout: 5000
   username: eli
