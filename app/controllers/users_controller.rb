@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def generate_new_password
+  def reset_password
     # Send an email with instructs on how to reset the password
     begin
       user = User.find(params[:id])
