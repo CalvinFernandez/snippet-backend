@@ -5,6 +5,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :last_name
       t.integer :age
       t.string :gender
+      t.string :referrer
 
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""

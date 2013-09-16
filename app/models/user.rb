@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
 
   has_many :messages
 
-  validates :gender, :inclusion => %w(male female)
-  validates :age, numericality: { only_integer: true }
+  #validates :gender, :inclusion => %w(male female)
+  #validates :age, numericality: { only_integer: true }
 end

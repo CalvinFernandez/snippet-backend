@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
       contact = User.find_by! email: dst
     rescue
       generated_password = Devise.friendly_token.first(8)
-      contact = User.create!(email: dst, password: generated_password)
+      contact = User.create!(email: dst, password: generated_password, referrer: src.email)
     end
 
     # Create a copy for the sender
