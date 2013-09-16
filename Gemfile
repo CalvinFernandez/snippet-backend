@@ -15,6 +15,12 @@ gem 'pg'
 gem 'rails_12factor', group: :production
 ruby "2.0.0"
 
+# Server sent events with event source hq
+gem "eshq"
+
+# Use thin as the server
+gem "thin"
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

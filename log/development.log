@@ -10224,3 +10224,483 @@ Processing by UsersController#contacts as HTML
   [1m[35mMessage Load (0.6ms)[0m  SELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1  [["user_id", 1]]
   [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IN (2, 3)[0m
 Completed 200 OK in 81ms (Views: 0.1ms | ActiveRecord: 7.3ms)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+
+
+Started GET "/messages/message_updates" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MessagesController#message_updates as HTML
+  Rendered messages/message_updates.html within layouts/application (1.1ms)
+Completed 200 OK in 131ms (Views: 110.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+
+
+Started GET "/assets/messages.css?body=1" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+
+
+Started GET "/assets/songs.css?body=1" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+
+
+Started GET "/assets/messages.js?body=1" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+
+
+Started GET "/assets/songs.js?body=1" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+
+
+Started POST "/eshq/socket" for 127.0.0.1 at 2013-09-16 10:31:22 -1000
+Processing by MessagesController#open_update_connection as */*
+  Parameters: {"channel"=>"test_channel"}
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 788ms
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/messages_controller.rb:54:in `open_update_connection'
+
+
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.0ms)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+
+
+Started GET "/messages/message_updates" for 127.0.0.1 at 2013-09-16 10:32:47 -1000
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MessagesController#message_updates as HTML
+  Rendered messages/message_updates.html within layouts/application (1.1ms)
+Completed 200 OK in 119ms (Views: 98.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-16 10:32:48 -1000
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2013-09-16 10:32:48 -1000
+
+
+Started GET "/assets/messages.css?body=1" for 127.0.0.1 at 2013-09-16 10:32:48 -1000
+
+
+Started GET "/assets/songs.css?body=1" for 127.0.0.1 at 2013-09-16 10:32:48 -1000
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-16 10:32:48 -1000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-16 10:32:48 -1000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-16 10:32:48 -1000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-09-16 10:32:48 -1000
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2013-09-16 10:32:48 -1000
+
+
+Started GET "/assets/messages.js?body=1" for 127.0.0.1 at 2013-09-16 10:32:48 -1000
+
+
+Started GET "/assets/songs.js?body=1" for 127.0.0.1 at 2013-09-16 10:32:48 -1000
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-16 10:32:48 -1000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-16 10:32:48 -1000
+
+
+Started POST "/eshq/socket" for 127.0.0.1 at 2013-09-16 10:32:48 -1000
+Processing by MessagesController#open_update_connection as */*
+  Parameters: {"channel"=>"test_channel"}
+Completed 500 Internal Server Error in 644ms
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/messages_controller.rb:54:in `open_update_connection'
+
+
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.6ms)
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (46.1ms)
+
+
+Started GET "/messages/message_updates" for 127.0.0.1 at 2013-09-16 10:35:20 -1000
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+Processing by MessagesController#message_updates as HTML
+  Rendered messages/message_updates.html within layouts/application (0.1ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-16 10:35:20 -1000
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2013-09-16 10:35:20 -1000
+
+
+Started GET "/assets/messages.css?body=1" for 127.0.0.1 at 2013-09-16 10:35:20 -1000
+
+
+Started GET "/assets/songs.css?body=1" for 127.0.0.1 at 2013-09-16 10:35:20 -1000
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-16 10:35:20 -1000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-16 10:35:20 -1000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-16 10:35:20 -1000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-09-16 10:35:20 -1000
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2013-09-16 10:35:20 -1000
+
+
+Started GET "/assets/messages.js?body=1" for 127.0.0.1 at 2013-09-16 10:35:20 -1000
+
+
+Started GET "/assets/songs.js?body=1" for 127.0.0.1 at 2013-09-16 10:35:20 -1000
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-16 10:35:20 -1000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-16 10:35:20 -1000
+
+
+Started POST "/eshq/socket" for 127.0.0.1 at 2013-09-16 10:35:21 -1000
+Processing by MessagesController#open_update_connection as */*
+  Parameters: {"channel"=>"test_channel"}
+Completed 200 OK in 631ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+
+
+Started GET "/messages/message_updates" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MessagesController#message_updates as HTML
+  Rendered messages/message_updates.html within layouts/application (1.1ms)
+Completed 200 OK in 120ms (Views: 99.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+
+
+Started GET "/assets/messages.css?body=1" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+
+
+Started GET "/assets/songs.css?body=1" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+
+
+Started GET "/assets/messages.js?body=1" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+
+
+Started GET "/assets/songs.js?body=1" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+
+
+Started POST "/eshq/socket" for 127.0.0.1 at 2013-09-16 10:38:00 -1000
+Processing by MessagesController#open_update_connection as */*
+  Parameters: {"channel"=>"test_channel"}
+Can't verify CSRF token authenticity
+Completed 200 OK in 694ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/messages/new" for 127.0.0.1 at 2013-09-16 10:41:14 -1000
+Processing by MessagesController#new as HTML
+Completed 404 Not Found in 1ms
+
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  app/controllers/messages_controller.rb:10:in `new'
+
+
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.3ms)
+
+
+Started POST "/messages/new" for 127.0.0.1 at 2013-09-16 10:41:46 -1000
+Processing by MessagesController#new as HTML
+  Parameters: {"content"=>"asdf", "src_id"=>"1", "dst_email"=>"test@example.com", "song_id"=>"1"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (3.3ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 1], ["content", "asdf"], ["created_at", Mon, 16 Sep 2013 20:41:46 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 20:41:46 UTC +00:00], ["user_id", 1]]
+  [1m[35m (15.0ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["contact_id", 1], ["content", "asdf"], ["created_at", Mon, 16 Sep 2013 20:41:46 UTC +00:00], ["sent", false], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 20:41:46 UTC +00:00], ["user_id", 1]]
+  [1m[36m (4.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSong Load (0.5ms)[0m  SELECT "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered message_mailer/new_message_alert.text.erb (0.6ms)
+
+Sent mail to test@example.com (21854.6ms)
+Date: Mon, 16 Sep 2013 10:41:46 -1000
+From: Lyricoo <notifications@lyricoo.com>
+To: test@example.com
+Message-ID: <52376d0ad983e_17a14a16f7c40896@eli-ubuntu.mail>
+Subject: test@example.com send you a message!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+test@example.com says "asdf
+
+    test@example.com also sent you a song - Good Morning Good Morning
+
+Completed 200 OK in 33754ms (Views: 0.6ms | ActiveRecord: 32.1ms)
+
+
+Started GET "/messages/message_updates" for 127.0.0.1 at 2013-09-16 10:44:07 -1000
+Processing by MessagesController#message_updates as HTML
+  Rendered messages/message_updates.html within layouts/application (0.4ms)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-16 10:44:07 -1000
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2013-09-16 10:44:07 -1000
+
+
+Started GET "/assets/messages.css?body=1" for 127.0.0.1 at 2013-09-16 10:44:07 -1000
+
+
+Started GET "/assets/songs.css?body=1" for 127.0.0.1 at 2013-09-16 10:44:07 -1000
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-16 10:44:07 -1000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-16 10:44:07 -1000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-16 10:44:07 -1000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-09-16 10:44:07 -1000
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2013-09-16 10:44:07 -1000
+
+
+Started GET "/assets/messages.js?body=1" for 127.0.0.1 at 2013-09-16 10:44:07 -1000
+
+
+Started GET "/assets/songs.js?body=1" for 127.0.0.1 at 2013-09-16 10:44:07 -1000
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-16 10:44:07 -1000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-16 10:44:07 -1000
+
+
+Started POST "/eshq/socket" for 127.0.0.1 at 2013-09-16 10:44:08 -1000
+Processing by MessagesController#open_update_connection as */*
+  Parameters: {"channel"=>"test_channel"}
+Can't verify CSRF token authenticity
+Completed 200 OK in 1811ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/messages/new" for 127.0.0.1 at 2013-09-16 10:44:17 -1000
+Processing by MessagesController#new as HTML
+  Parameters: {"content"=>"asdf", "src_id"=>"1", "dst_email"=>"test@example.com", "song_id"=>"1"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["contact_id", 1], ["content", "asdf"], ["created_at", Mon, 16 Sep 2013 20:44:17 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 20:44:17 UTC +00:00], ["user_id", 1]]
+  [1m[36m (8.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 1], ["content", "asdf"], ["created_at", Mon, 16 Sep 2013 20:44:17 UTC +00:00], ["sent", false], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 20:44:17 UTC +00:00], ["user_id", 1]]
+  [1m[35m (6.3ms)[0m  COMMIT
+  [1m[36mSong Load (0.4ms)[0m  [1mSELECT "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered message_mailer/new_message_alert.text.erb (0.2ms)
+
+Sent mail to test@example.com (5632.4ms)
+Date: Mon, 16 Sep 2013 10:44:17 -1000
+From: Lyricoo <notifications@lyricoo.com>
+To: test@example.com
+Message-ID: <52376da1e1e2a_17a14a16f7c4097@eli-ubuntu.mail>
+Subject: test@example.com send you a message!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+test@example.com says "asdf
+
+    test@example.com also sent you a song - Good Morning Good Morning
+
+Completed 200 OK in 6380ms (Views: 0.2ms | ActiveRecord: 17.5ms)
+
+
+Started POST "/messages/new" for 127.0.0.1 at 2013-09-16 10:45:02 -1000
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+Processing by MessagesController#new as HTML
+  Parameters: {"content"=>"asdf", "src_id"=>"1", "dst_email"=>"test@example.com", "song_id"=>"1"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 1], ["content", "asdf"], ["created_at", Mon, 16 Sep 2013 20:45:03 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 20:45:03 UTC +00:00], ["user_id", 1]]
+  [1m[35m (15.0ms)[0m  COMMIT
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["contact_id", 1], ["content", "asdf"], ["created_at", Mon, 16 Sep 2013 20:45:03 UTC +00:00], ["sent", false], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 20:45:03 UTC +00:00], ["user_id", 1]]
+  [1m[36m (8.2ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 11141ms (Views: 0.6ms | ActiveRecord: 32.5ms)
+
+
+Started POST "/messages/new" for 127.0.0.1 at 2013-09-16 10:45:33 -1000
+Processing by MessagesController#new as HTML
+  Parameters: {"content"=>"wewewew", "src_id"=>"1", "dst_email"=>"test@example.com", "song_id"=>"1"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 1], ["content", "wewewew"], ["created_at", Mon, 16 Sep 2013 20:45:33 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 20:45:33 UTC +00:00], ["user_id", 1]]
+  [1m[35m (20.0ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["contact_id", 1], ["content", "wewewew"], ["created_at", Mon, 16 Sep 2013 20:45:33 UTC +00:00], ["sent", false], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 20:45:33 UTC +00:00], ["user_id", 1]]
+  [1m[36m (10.3ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 637ms (Views: 0.6ms | ActiveRecord: 34.2ms)
+
+
+Started POST "/messages/new" for 127.0.0.1 at 2013-09-16 10:45:42 -1000
+Processing by MessagesController#new as HTML
+  Parameters: {"content"=>"asasas", "src_id"=>"1", "dst_email"=>"test@example.com", "song_id"=>"1"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 1], ["content", "asasas"], ["created_at", Mon, 16 Sep 2013 20:45:42 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 20:45:42 UTC +00:00], ["user_id", 1]]
+  [1m[35m (18.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["contact_id", 1], ["content", "asasas"], ["created_at", Mon, 16 Sep 2013 20:45:42 UTC +00:00], ["sent", false], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 20:45:42 UTC +00:00], ["user_id", 1]]
+  [1m[36m (2.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 556ms (Views: 0.4ms | ActiveRecord: 23.6ms)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+
+
+Started GET "/messages/message_updates" for 127.0.0.1 at 2013-09-16 10:47:31 -1000
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MessagesController#message_updates as HTML
+  Rendered messages/message_updates.html within layouts/application (1.3ms)
+Completed 200 OK in 125ms (Views: 104.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-16 10:47:32 -1000
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2013-09-16 10:47:32 -1000
+
+
+Started GET "/assets/messages.css?body=1" for 127.0.0.1 at 2013-09-16 10:47:32 -1000
+
+
+Started GET "/assets/songs.css?body=1" for 127.0.0.1 at 2013-09-16 10:47:32 -1000
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-16 10:47:32 -1000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-16 10:47:32 -1000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-16 10:47:32 -1000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-09-16 10:47:32 -1000
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2013-09-16 10:47:32 -1000
+
+
+Started GET "/assets/messages.js?body=1" for 127.0.0.1 at 2013-09-16 10:47:32 -1000
+
+
+Started GET "/assets/songs.js?body=1" for 127.0.0.1 at 2013-09-16 10:47:32 -1000
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-16 10:47:32 -1000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-16 10:47:32 -1000
+
+
+Started POST "/eshq/socket" for 127.0.0.1 at 2013-09-16 10:47:32 -1000
+Processing by MessagesController#open_update_connection as */*
+  Parameters: {"channel"=>"1"}
+Can't verify CSRF token authenticity
+Completed 200 OK in 613ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/messages/new" for 127.0.0.1 at 2013-09-16 10:47:37 -1000
+Processing by MessagesController#new as HTML
+  Parameters: {"content"=>"asasas", "src_id"=>"1", "dst_email"=>"test@example.com", "song_id"=>"1"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (3.3ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 1], ["content", "asasas"], ["created_at", Mon, 16 Sep 2013 20:47:37 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 20:47:37 UTC +00:00], ["user_id", 1]]
+  [1m[35m (39.5ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["contact_id", 1], ["content", "asasas"], ["created_at", Mon, 16 Sep 2013 20:47:37 UTC +00:00], ["sent", false], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 20:47:37 UTC +00:00], ["user_id", 1]]
+  [1m[36m (18.8ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 716ms (Views: 0.7ms | ActiveRecord: 69.7ms)

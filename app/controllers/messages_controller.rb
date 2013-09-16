@@ -31,7 +31,12 @@ class MessagesController < ApplicationController
     if generated_password
       UserMailer.invitation(contact, generated_password, src, received).deliver
     else
-      MessageMailer.new_message_alert(src, contact, received).deliver
+      #MessageMailer.new_message_alert(src, contact, received).deliver
+      ESHQ.send(
+          :channel => contact.id,
+          :data => content,
+          :type => "message"
+      )
     end
 
     # Return true if successful or false otherwise
@@ -41,6 +46,16 @@ class MessagesController < ApplicationController
       # Combine and display errors from both messages
       render json: {:success => false, :errors => sent.errors.messages.merge(received.errors.messages)}
     end
+  end
+
+  def open_update_connection
+    socket = ESHQ.open(:channel => params[:channel])
+
+    render json: {:socket => socket}.to_json
+  end
+
+  def message_updates
+
   end
 
 end
