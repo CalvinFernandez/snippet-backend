@@ -34,7 +34,7 @@ class MessagesController < ApplicationController
       #MessageMailer.new_message_alert(src, contact, received).deliver
       ESHQ.send(
           :channel => contact.id,
-          :data => content,
+          :data => received.to_json,
           :type => "message"
       )
     end

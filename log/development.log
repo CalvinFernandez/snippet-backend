@@ -10704,3 +10704,198 @@ Can't verify CSRF token authenticity
   [1m[35mSQL (1.2ms)[0m  INSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["contact_id", 1], ["content", "asasas"], ["created_at", Mon, 16 Sep 2013 20:47:37 UTC +00:00], ["sent", false], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 20:47:37 UTC +00:00], ["user_id", 1]]
   [1m[36m (18.8ms)[0m  [1mCOMMIT[0m
 Completed 200 OK in 716ms (Views: 0.7ms | ActiveRecord: 69.7ms)
+DEPRECATION WARNING: devise :token_authenticatable is deprecated. Please check Devise 3.1 release notes for more information on how to upgrade. (called from <class:User> at /home/eli/snippet/snippet-backend/app/models/user.rb:3)
+
+
+Started GET "/users/message_updates" for 127.0.0.1 at 2013-09-16 12:09:33 -1000
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+AbstractController::ActionNotFound (The action 'message_updates' could not be found for UsersController):
+  actionpack (4.0.0) lib/abstract_controller/base.rb:131:in `process'
+  actionpack (4.0.0) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.0) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.0) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.0) lib/action_dispatch/routing/route_set.rb:655:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.0) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:373:in `_run__444457865__call__callbacks'
+  activesupport (4.0.0) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `block in call'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.0) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.0) lib/rails/rack/logger.rb:21:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.0) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.0) lib/action_dispatch/middleware/static.rb:64:in `call'
+  railties (4.0.0) lib/rails/engine.rb:511:in `call'
+  railties (4.0.0) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  thin (1.5.1) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.1) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.1) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.1) lib/thin/connection.rb:54:in `process'
+  thin (1.5.1) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.5.1) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.1) lib/thin/server.rb:159:in `start'
+  rack (1.5.2) lib/rack/handler/thin.rb:16:in `run'
+  rack (1.5.2) lib/rack/server.rb:264:in `start'
+  railties (4.0.0) lib/rails/commands/server.rb:84:in `start'
+  railties (4.0.0) lib/rails/commands.rb:78:in `block in <top (required)>'
+  railties (4.0.0) lib/rails/commands.rb:73:in `tap'
+  railties (4.0.0) lib/rails/commands.rb:73:in `<top (required)>'
+  bin/rails:4:in `require'
+  bin/rails:4:in `<main>'
+
+
+  Rendered /home/eli/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (3.9ms)
+
+
+Started GET "/messages/message_updates" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+Processing by MessagesController#message_updates as HTML
+  Rendered messages/message_updates.html within layouts/application (0.4ms)
+Completed 200 OK in 121ms (Views: 98.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+
+
+Started GET "/assets/messages.css?body=1" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+
+
+Started GET "/assets/songs.css?body=1" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+
+
+Started GET "/assets/messages.js?body=1" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+
+
+Started GET "/assets/songs.js?body=1" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+
+
+Started POST "/eshq/socket" for 127.0.0.1 at 2013-09-16 12:10:07 -1000
+Processing by MessagesController#open_update_connection as */*
+  Parameters: {"channel"=>"1"}
+Can't verify CSRF token authenticity
+Completed 200 OK in 890ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/messages/message_updates" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+Processing by MessagesController#message_updates as HTML
+  Rendered messages/message_updates.html within layouts/application (0.1ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+
+
+Started GET "/assets/messages.css?body=1" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+
+
+Started GET "/assets/songs.css?body=1" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+
+
+Started GET "/assets/messages.js?body=1" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+
+
+Started GET "/assets/songs.js?body=1" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+
+
+Started POST "/eshq/socket" for 127.0.0.1 at 2013-09-16 12:11:14 -1000
+Processing by MessagesController#open_update_connection as */*
+  Parameters: {"channel"=>"1"}
+Can't verify CSRF token authenticity
+Completed 200 OK in 735ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/messages/new" for 127.0.0.1 at 2013-09-16 12:12:05 -1000
+Processing by MessagesController#new as HTML
+  Parameters: {"content"=>"asdfsa", "src_id"=>"1", "dst_email"=>"test@example.com", "song_id"=>"1"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (4.4ms)[0m  [1mINSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["contact_id", 1], ["content", "asdfsa"], ["created_at", Mon, 16 Sep 2013 22:12:06 UTC +00:00], ["sent", true], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 22:12:06 UTC +00:00], ["user_id", 1]]
+  [1m[35m (9.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "messages" ("contact_id", "content", "created_at", "sent", "song_id", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["contact_id", 1], ["content", "asdfsa"], ["created_at", Mon, 16 Sep 2013 22:12:06 UTC +00:00], ["sent", false], ["song_id", 1], ["updated_at", Mon, 16 Sep 2013 22:12:06 UTC +00:00], ["user_id", 1]]
+  [1m[36m (5.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 766ms (Views: 0.6ms | ActiveRecord: 28.5ms)
