@@ -14,8 +14,8 @@ class TestData < ActiveRecord::Migration
 
 
     Message.create(:content => 'My message content', :user => user1, :contact_id => 2, :song_id => 1, :sent => true)
-    Message.create(:content => 'Bite my shiny metal ass', user: user1, :contact_id => 3, :song_id => 2, :sent => true)
-    Message.create(:content => 'Bae caught me sleeping', user: user2, :contact_id => 1, :song_id => 3, :sent => true)
+    Message.create(:content => 'Bite my shiny metal ass', user: user3, :contact_id => 1, :song_id => 2, :sent => true)
+    Message.create(:content => 'Bae caught me sleeping', user: user2, :contact_id => 3, :song_id => 3, :sent => true)
 
   end
 end

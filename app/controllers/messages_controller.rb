@@ -4,6 +4,10 @@ class MessagesController < ApplicationController
     render json: Message.find(params[:id])
   end
 
+  def all
+    render json: Message.all
+  end
+
   # Create a new message
   def new
     # Get message details from post parameters

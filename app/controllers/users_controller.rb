@@ -74,12 +74,8 @@ class UsersController < ApplicationController
   end
 
   def contacts
-    list = []
-    User.find(params[:id]).messages.each do |message|
-       if !list.index(message.contact_id)
-         list.push(message.contact_id)
-       end
-    end
+    user = User.find(params[:id])
+    list = user.contacts
     render json: User.find(list).to_json(except: [:created_at, :updated_at])
   end
 end

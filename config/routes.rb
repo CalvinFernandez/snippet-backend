@@ -1,4 +1,5 @@
 Snippet::Application.routes.draw do
+  get "stats/all"
   root :to => redirect('/docs.html')
 
   # Use the sessions controller for login and logout
