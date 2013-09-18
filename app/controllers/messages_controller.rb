@@ -5,7 +5,13 @@ class MessagesController < ApplicationController
   end
 
   def all
-    render json: Message.all
+    user = User.find(params[:id])
+    result = []
+    user.contacts.each do |contact_id|
+
+       result.push({contact_id: contact_id, conversation: Message.where(user: user, contact_id: contact_id)})
+    end
+    render json: result
   end
 
   # Create a new message
