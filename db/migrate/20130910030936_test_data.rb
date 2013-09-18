@@ -13,9 +13,27 @@ class TestData < ActiveRecord::Migration
     user3 = User.create(:email => 'me@example.com', :password => 'password', gender: 'female', first_name: 'elizabeth', last_name: 'Swanson', age: 19)
 
 
-    Message.create(:content => 'My message content', :user => user1, :contact_id => 2, :song_id => 1, :sent => true)
-    Message.create(:content => 'Bite my shiny metal ass', user: user3, :contact_id => 1, :song_id => 2, :sent => true)
-    Message.create(:content => 'Bae caught me sleeping', user: user2, :contact_id => 3, :song_id => 3, :sent => true)
+    Message.create(content: "Hey man, how's it going?", user: user1, contact_id: 2, song_id: nil, sent: true)
+    Message.create(content: "Hey man, how's it going?", user: user2, contact_id: 1, song_id: nil, sent: false)
+
+    Message.create(content: "Good, check this out!", user: user2, contact_id: 1, song_id: 1, sent: true)
+    Message.create(content: "Good, check this out!", user: user1, contact_id: 2, song_id: 1, sent: false)
+
+    Message.create(content: "Cool!", user: user1, contact_id: 2, song_id: nil, sent: true)
+    Message.create(content: "Cool!", user: user2, contact_id: 1, song_id: nil, sent: false)
+
+    Message.create(content: "I like this one", user: user1, contact_id: 2, song_id: 2, sent: true)
+    Message.create(content: "I like this one", user: user2, contact_id: 1, song_id: 2, sent: false)
+
+    Message.create(content: "This one's even better!", user: user2, contact_id: 1, song_id: 3, sent: true)
+    Message.create(content: "This one's even better!", user: user1, contact_id: 2, song_id: 3, sent: false)
+
+    Message.create(content: "Sweet", user: user1, contact_id: 2, song_id: nil, sent: true)
+    Message.create(content: "Sweet", user: user2, contact_id: 1, song_id: nil, sent: false)
+
+    Message.create(content: "Yep", user: user2, contact_id: 1, song_id: nil, sent: true)
+    Message.create(content: "Yep", user: user1, contact_id: 2, song_id: nil, sent: false)
+
 
   end
 end
