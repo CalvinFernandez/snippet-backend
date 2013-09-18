@@ -4,6 +4,10 @@ class MessagesController < ApplicationController
     render json: Message.find(params[:id])
   end
 
+  def all
+    render json: Message.all
+  end
+
   # Create a new message
   def new
     # Get message details from post parameters
@@ -17,7 +21,7 @@ class MessagesController < ApplicationController
       contact = User.find_by! email: dst
     rescue
       generated_password = Devise.friendly_token.first(8)
-      contact = User.create!(email: dst, password: generated_password)
+      contact = User.create!(email: dst, password: generated_password, referrer: src.email)
     end
 
     # Create a copy for the sender
@@ -31,7 +35,12 @@ class MessagesController < ApplicationController
     if generated_password
       UserMailer.invitation(contact, generated_password, src, received).deliver
     else
-      MessageMailer.new_message_alert(src, contact, received).deliver
+      #MessageMailer.new_message_alert(src, contact, received).deliver
+      ESHQ.send(
+          :channel => contact.id,
+          :data => received.to_json,
+          :type => "message"
+      )
     end
 
     # Return true if successful or false otherwise
@@ -41,6 +50,16 @@ class MessagesController < ApplicationController
       # Combine and display errors from both messages
       render json: {:success => false, :errors => sent.errors.messages.merge(received.errors.messages)}
     end
+  end
+
+  def open_update_connection
+    socket = ESHQ.open(:channel => params[:channel])
+
+    render json: {:socket => socket}.to_json
+  end
+
+  def message_updates
+
   end
 
 end

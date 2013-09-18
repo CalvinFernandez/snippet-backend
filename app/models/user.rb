@@ -7,6 +7,16 @@ class User < ActiveRecord::Base
 
   has_many :messages
 
-  validates :gender, :inclusion => %w(male female)
-  validates :age, numericality: { only_integer: true }
+  #validates :gender, :inclusion => %w(male female)
+  #validates :age, numericality: { only_integer: true }
+
+  def contacts
+    list = []
+    self.messages.each do |message|
+      if !list.index(message.contact_id)
+        list.push(message.contact_id)
+      end
+    end
+    list
+  end
 end

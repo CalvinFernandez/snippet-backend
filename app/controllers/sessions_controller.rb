@@ -1,6 +1,7 @@
 class SessionsController < Devise::SessionsController
   skip_before_action :require_login, only: :create
 
+  # Login
   def create
     resource = User.find_for_database_authentication(:email => params[:email])
     return invalid_login_attempt unless resource
@@ -14,6 +15,7 @@ class SessionsController < Devise::SessionsController
     invalid_login_attempt
   end
 
+  # Logout
   def destroy
     # Look up the user based on the provided email
     resource = User.find_for_database_authentication(email: params[:email])

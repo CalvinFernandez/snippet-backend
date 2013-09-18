@@ -8,42 +8,73 @@
 <h1>API</h1>
 -----------
 
-<p>API endpoints for the snippet backend<p>
+<p>API endpoints for the snippet backend
+
+<p>
 
 <p>All endpoints, except those for account login and creation, require authentication</p>
 
 <p>If authentication fails, a 401 status code is returned as well as an error message.</p>
 
 <p>For valid authentication, the authentication token received on login or account creation must be passed as the
-'auth_token' parameter. For example, /users/all?auth_token=-ibgefjRw6VSEj97VPgx</p>
+    'auth_token' parameter. For example, /users/all?auth_token=-ibgefjRw6VSEj97VPgx</p>
 
 <h2>**** Authorization ****</h2>
 
 <h3>Create a new account </h3>
 
-POST request to /users/new with the parameters 'email' and 'password'.</p>
-*Does NOT require authentication<p>
-On failure the error messages are returned.<p>
-On success a user object is returned which contains the user_id, email, and authentication_token.</p>
+<p>POST request to /users/new</p>
+
+<p>Params:</p>
+
+<p>'email' - User email</p>
+
+<p>'password' - User password</p>
+
+<p>*Does NOT require authentication</p>
+
+<p>On failure the error messages are returned.</p>
+
+<p>On success a user object is returned which contains the user_id, email, and authentication_token.</p>
 
 <h3>Login to an existing account </h3>
 
-<p>POST request to /users/sign_in with the parameters 'email' and 'password'</p>
-<p>*Does NOT require authentication    </p>
+<p>POST request to /users/sign_in</p>
+
+<p>Params:</p>
+
+<p>'email' - User email</p>
+
+<p>'password' - User password</p>
+
+<p>*Does NOT require authentication </p>
+
 <p>On failure an error message is returned.</p>
+
 <p>On success the 'auth_token' and 'id' are returned. 'id' is the user_id of the signed in user, and 'auth_token' is the
-authorization token that needs to be included with each api call. </p>
+    authorization token that needs to be included with each api call. </p>
 
 <h3>Password Reset </h3>
 
-<p>/users/:user_id/reset_password</p>
+<p>/users/reset_password</p>
+
+<p>Params:</p>
+
+<p>'id' - User id</p>
+
 <p>*Does NOT require authentication</p>
+
 <p>Sends an email to the user that allows them to reset their password</p>
+
 
 <h3>Logout</h3>
 
 <p>POST request to /users/sign_out
-<p>Must include the parameter 'email' of the account to be logged out</p>
+
+<p>Params:</p>
+
+<p>'email' - Email of user to log out</p>
+
 <p>A successful call to logout deletes the authentication token so that no further requests can be made using it.</p>
 
 <h2>**** Users ****</h2>
@@ -52,26 +83,49 @@ authorization token that needs to be included with each api call. </p>
 /users/all
 
 <h3>Details for a specific user</h3>
-/users/show/:user_id
+/users/show/
+<p>Params: 'id'</p>
 
 <h3>All messages belonging to a user</h3>
-/users/:user_id/messages
 
-<h3>All messages between a user and a specific contact. Where contact_id is the user_id of the contact</h3>
-/users/:user_id/messages/:contact_id
+<p>/users/messages</p>
+
+<p>Params:</p>
+
+<p>'id' - User id</p>
+
+<p>'contact_id' - Optional. Messages only between the user with this id</p>
+
+<h3>Contacts for a specific user</h3>
+/users/contacts/
+<p>Params:</p>
+
+<p>'id' - User id</p>
+
 
 <h2>**** Messages **** </h2>
 
 <h3>Get a specific message</h3>
-/messages/show/:message_id
+
+<p>/messages/show/</p>
+
+<p>Params:</p>
+
+<p>'id' - Message id</p>
 
 <h3>Create a new message</h3>
+
 <p>POST request to /messages/new </p>
+
 <p>Parameters: </p>
+
 <p>'src_id' - The user_id of the sender </p>
+
 <p>'dst_email' - The email address of the receiver. This can be an address that doesn't yet have an account; An account
-will be created for them. </p>
+    will be created for them. </p>
+
 <p>'content' - The message body </p>
+
 <p>'song_id' - The song_id of a song to include. Leave this blank if the message is just text. </p>
 
 <h2>**** Songs **** </h2>
@@ -80,7 +134,10 @@ will be created for them. </p>
 /songs/all
 
 <h3>A specific song</h3>
-/songs/show/:song_id
+/songs/show/
+<p>Params:</p>
+
+<p>'id' - Song id</p>
 
 <h2>**** Categories ****</h2>
 
@@ -88,7 +145,10 @@ will be created for them. </p>
 /categories/all
 
 <h3>All songs in a specific category</h3>
-/categories/:category_id/all
+/categories/songs
+<p>Params:</p>
+
+<p>'id' - Category id</p>
 
 
 </body>
