@@ -62,7 +62,7 @@ class UsersController < ApplicationController
     end
 
     ret = Jbuilder.encode do |json|
-      json.messages _messages do |message|
+      json.array! _messages do |message|
         json.(message, :content, :user_id, :contact_id, :song_id, :sent, :created_at)
 
         if message.song_id

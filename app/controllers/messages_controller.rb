@@ -7,9 +7,9 @@ class MessagesController < ApplicationController
   def all
     user = User.find(params[:id])
     result = []
-    user.contacts.each do |contact_id|
+    user.contacts.each do |contact|
 
-      result.push({contact_id: contact_id, conversation: Message.where(user: user, contact_id: contact_id)})
+      result.push({contact: contact, conversation: Message.where(user: user, contact_id: contact.contact_id)})
 
     end
     render json: result.to_json(methods: :song)
