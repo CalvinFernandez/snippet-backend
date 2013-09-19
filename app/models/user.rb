@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
     end
     list
   end
+
+  def first_message_of_the_day
+    true
+  end
 end
