@@ -6,7 +6,7 @@ class MessageMailer < ActionMailer::Base
     @dst = dst
     @message = message
 
-    @url = 'http://www.maqaw.com'
+    @url = 'http://www.lyricoo.com'
 
     @srcName = src.email
     if src.first_name && src.last_name
