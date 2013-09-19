@@ -6,7 +6,7 @@ class Song < ActiveRecord::Base
     artist = self.artist.downcase.gsub(' ', '_')
     category = self.category.name.downcase.gsub(' ', '_')
 
-    file_name = "#{title}-#{artist}-#{category}.m4a"
+    file_name = "#{title}-#{artist}-#{category}.mp3"
 
     "/songs/#{file_name}"
   end

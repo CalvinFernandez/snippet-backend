@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     list = []
     self.messages.each do |message|
       if !list.index(message.contact_id)
-        list.push(message.contact_id)
+        list.push(User.find(message.contact_id))
       end
     end
     list
