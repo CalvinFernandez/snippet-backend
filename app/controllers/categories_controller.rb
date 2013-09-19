@@ -6,6 +6,13 @@ class CategoriesController < ApplicationController
 
   # List songs in a specific category
   def songs
-    render json: Song.where(category_id: params[:id])
+    ret = Jbuilder.encode do |json|
+      _songs = Song.where(category_id: params[:id])
+      json.array! _songs do |song|
+        json.(song, :title, :artist, :category_id, :created_at) 
+        json.path song.path
+      end
+    end
+    render json: ret
   end
 end

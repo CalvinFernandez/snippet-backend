@@ -7,9 +7,9 @@ class MessagesController < ApplicationController
   def all
     user = User.find(params[:id])
     result = []
-    user.contacts.each do |contact_id|
 
-      result.push({contact_id: contact_id, conversation: Message.where(user: user, contact_id: contact_id)})
+    user.contacts.each do |contact|
+      result.push({contact: contact, conversation: Message.where(user: user, contact_id: contact.id)})
     end
     render json: result.to_json(methods: :song)
   end
@@ -57,7 +57,7 @@ class MessagesController < ApplicationController
 
     # Return true if successful or false otherwise
     if sent.valid? && received.valid?
-      render json: {success: true, conversation: Message.where(user: src, contact_id: contact.id)}
+      render json: Message.where(user: src, contact_id: contact.id)
     else
       # Combine and display errors from both messages
       render json: {:success => false, :errors => sent.errors.messages.merge(received.errors.messages)}
@@ -75,5 +75,3 @@ class MessagesController < ApplicationController
   end
 
 end
-
-

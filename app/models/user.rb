@@ -10,17 +10,10 @@ class User < ActiveRecord::Base
   #validates :gender, :inclusion => %w(male female)
   #validates :age, numericality: { only_integer: true }
 
-  def contacts
-    list = []
-    self.messages.each do |message|
-      if !list.index(message.contact_id)
-        list.push(message.contact_id)
-      end
-    end
-    list
-  end
+  has_many :contacts, :through => :messages, :uniq => true
 
   def first_message_of_the_day
     true
   end
+
 end

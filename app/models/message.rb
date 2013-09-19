@@ -9,6 +9,7 @@ end
 
 class Message < ActiveRecord::Base
   belongs_to :user
+  belongs_to :contact, :foreign_key => "contact_id", :class_name => "User"
 
   # Validate the message fields
   include ActiveModel::Validations
