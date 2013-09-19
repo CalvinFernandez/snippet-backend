@@ -23,7 +23,8 @@ CatFunction
 
   # Parse each file name and add it to the migration
   file_names.each do |f|
-    # File is of the form song_title#artist_name#category_name.mp3
+
+    # File is of the form song_title-artist_name-category_name.mp3
     # Remove .mp3 and split title, artist, and category into an array
     info = f.chomp('.m4a').split('-')
 

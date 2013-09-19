@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   # Details of a specific message
   def show
-    render json: Message.find(params[:id])
+    render json: Message.find(params[:id]).to_json(methods: :song)
   end
 
   def all
@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
 
        result.push({contact_id: contact_id, conversation: Message.where(user: user, contact_id: contact_id)})
     end
-    render json: result
+    render json: result.to_json(methods: :song)
   end
 
   # Create a new message
