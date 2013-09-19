@@ -1,5 +1,5 @@
 # Get files in current directory
-DIRECTORY = '*.mp3'
+DIRECTORY = '*'
 file_names = Dir.glob(DIRECTORY)
 
 # Create migration file
@@ -24,9 +24,15 @@ CatFunction
   # Parse each file name and add it to the migration
   file_names.each do |f|
 
-    # File is of the form song_title-artist_name-category_name.mp3
-    # Remove .mp3 and split title, artist, and category into an array
-    info = f.chomp('.m4a').split('-')
+
+    # File is of the form song_title-artist_name-category_name.format
+    # Save format type and then remove file extension
+    format = File.extname(f)
+    if (format == '.rb' || format == '.rb~')
+      next
+    end
+    info = f.chomp(format).split('-')
+
 
     # Replace underscores with spaces, and make sure only the first
     # letter of each word is capitalized
@@ -36,8 +42,12 @@ CatFunction
     artist = info[1]
     category = info[2]
 
+    if !category || !artist || !title
+      puts f
+    end
+
     # Add line to migration
-    migration.puts("Song.create(title: '#{title}', artist: '#{artist}', category: getCategory('#{category}'))")
+    migration.puts("Song.create(title: \"#{title}\", artist: \"#{artist}\", category: getCategory(\"#{category}\"), format: \"#{format}\")")
   end
 
   # Add end tags
