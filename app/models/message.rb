@@ -15,6 +15,14 @@ class Message < ActiveRecord::Base
   include ActiveModel::Validations
   validates_with MessageValidator
 
+  def song
+    begin
+      Song.find(self.song_id)
+    rescue
+      nil
+    end
+  end
+
 end
 
 

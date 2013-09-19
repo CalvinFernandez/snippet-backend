@@ -1,16 +1,18 @@
 class MessagesController < ApplicationController
   # Details of a specific message
   def show
-    render json: Message.find(params[:id])
+    render json: Message.find(params[:id]).to_json(methods: :song)
   end
 
   def all
     user = User.find(params[:id])
     result = []
-    user.contacts.each do |contact|
-       result.push({contact: contact, conversation: Message.where(user: user, contact_id: contact.id)})
+    user.contacts.each do |contact_id|
+
+      result.push({contact_id: contact_id, conversation: Message.where(user: user, contact_id: contact_id)})
+
     end
-    render json: result
+    render json: result.to_json(methods: :song)
   end
 
   # Create a new message
@@ -41,16 +43,20 @@ class MessagesController < ApplicationController
       UserMailer.invitation(contact, generated_password, src, received).deliver
     else
       #MessageMailer.new_message_alert(src, contact, received).deliver
-      ESHQ.send(
-          :channel => contact.id,
-          :data => received.to_json,
-          :type => "message"
-      )
+      begin
+        ESHQ.send(
+            :channel => contact.id,
+            :data => received.to_json,
+            :type => "message"
+        )
+      rescue
+        # Failed to send update
+      end
     end
 
     # Return true if successful or false otherwise
     if sent.valid? && received.valid?
-      render json: {:success => true}
+      render json: {success: true, conversation: Message.where(user: src, contact_id: contact.id)}
     else
       # Combine and display errors from both messages
       render json: {:success => false, :errors => sent.errors.messages.merge(received.errors.messages)}
