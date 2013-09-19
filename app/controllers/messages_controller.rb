@@ -23,6 +23,7 @@ class MessagesController < ApplicationController
     song = params[:song_id]
 
     # Retrieve contact. If they don't exist, create an account for them
+    generated_password = nil
     begin
       contact = User.find_by! email: dst
     rescue
