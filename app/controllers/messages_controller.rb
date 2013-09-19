@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     result = []
     user.contacts.each do |contact_id|
 
-       result.push({contact_id: contact_id, conversation: Message.where(user: user, contact_id: contact_id)})
+      result.push({contact_id: contact_id, conversation: Message.where(user: user, contact_id: contact_id)})
     end
     render json: result.to_json(methods: :song)
   end
@@ -42,16 +42,20 @@ class MessagesController < ApplicationController
       UserMailer.invitation(contact, generated_password, src, received).deliver
     else
       #MessageMailer.new_message_alert(src, contact, received).deliver
-      ESHQ.send(
-          :channel => contact.id,
-          :data => received.to_json,
-          :type => "message"
-      )
+      begin
+        ESHQ.send(
+            :channel => contact.id,
+            :data => received.to_json,
+            :type => "message"
+        )
+      rescue
+        # Failed to send update
+      end
     end
 
     # Return true if successful or false otherwise
     if sent.valid? && received.valid?
-      render json: {:success => true}
+      render json: {success: true, conversation: Message.where(user: src, contact_id: contact.id)}
     else
       # Combine and display errors from both messages
       render json: {:success => false, :errors => sent.errors.messages.merge(received.errors.messages)}
