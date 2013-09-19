@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="4242846392">
+  <component name="DataSourceManagerImpl" format="xml" hash="950351106">
     <data-source source="LOCAL" name="Rails snippet-backend: development" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="f2bac736-adaa-4251-934b-32f7a9e20322">
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:snippet_development</jdbc-url>
@@ -17,19 +17,6 @@
     <data-source source="LOCAL" name="Rails snippet-backend: test" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="d0082cd8-447d-4c2a-829a-9afb7db2789d">
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:snippet_development</jdbc-url>
-      <user-name>eli</user-name>
-      <libraries>
-        <library>
-          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-driver-license.txt</url>
-        </library>
-        <library>
-          <url>jar://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.2-1002.jdbc3.jar!/</url>
-        </library>
-      </libraries>
-    </data-source>
-    <data-source source="LOCAL" name="Rails snippet-backend: production" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="f058fd85-1e0b-475c-92b4-fbade13b02bc">
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql:snippet_test</jdbc-url>
       <user-name>eli</user-name>
       <libraries>
         <library>

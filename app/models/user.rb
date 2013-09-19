@@ -13,7 +13,27 @@ class User < ActiveRecord::Base
   has_many :contacts, :through => :messages, :uniq => true
 
   def first_message_of_the_day
-    true
+    puts "Checking first message"
+      begin
+        messages = Message.where(user_id: self.id).order("created_at DESC").limit(2)
+      rescue
+        puts "failed query: mailing"
+        return true
+      end
+
+      if messages.size != 2
+        puts "not two: mailing"
+        return true
+      end
+
+      messages.each do |message|
+        puts message.content
+      end
+
+      puts messages[0].created_at.day != messages[1].created_at.day
+      return messages[0].created_at.day != messages[1].created_at.day
+
+
   end
 
 end

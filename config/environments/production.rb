@@ -79,13 +79,13 @@ Snippet::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Devise mailer
-  config.action_mailer.default_url_options = { :host => 'lyricoo.com' }
+  #config.action_mailer.default_url_options = { :host => 'lyricoo.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :address              => "smtpout.secureserver.net",
-      :port                 => 25,
-      :user_name            => 'eli@lyricoo.com',
-      :password             => 'Lyricoomailer',
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :user_name            => 'lyricoomailer@gmail.com',
+      :password             => 'LyricooMailer1',
       :authentication       => 'plain',
       :enable_starttls_auto => true  }
 end
