@@ -5,14 +5,15 @@ class UserMailer < ActionMailer::Base
     @user = user
     @password = password
     @referrer = referrer
-    @message = message
-    @url = 'www.lyricoo.com'
-
-    if message.song_id
-      @song = Song.find(message.song_id)
+    @referrerName = referrer.email
+    if referrer.first_name && referrer.last_name
+      @referrerName = referrer.first_name.capitalize + " " +referrer.last_name.capitalize
     end
+    @message = message
+    @url = 'www.maqaw.com'
+    @song = Song.find(message.song_id)
 
-    mail(to: user.email, subject: "#{referrer.email} sent you a message on Lyricoo!")
+    mail(to: user.email, subject: "#{@referrerName} sent you a message on Lyricoo!")
   end
 
   def launch(user, password)

@@ -1,12 +1,10 @@
-<%= @referrer.email %> sent you a message!
+<%= @referrerName %> sent you a message and invited you to join the Lyricoo beta!
 
 "<%= @message.content %>"
 
-<% if @song %>
-    <%= @referrer.email %> also sent you a song - <%= @song.title %>
-<% end %>
-
 Go to <%= @url %> to see your message and send a reply!
+
+We've already created an account for you. Just use the following username and password to login!
 
 Username: <%= @user.email %>
 Password: <%= @password %>

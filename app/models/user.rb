@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
 
   has_many :contacts, :through => :messages, :uniq => true
 
+  def first_message_of_the_day
+    true
+  end
+
 end
