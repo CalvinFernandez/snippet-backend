@@ -11,6 +11,8 @@ gem 'devise'
 # Use postgresql as the database
 gem 'sqlite3'
 
+gem 'pry'
+
 # Add heroku support
 gem 'rails_12factor', group: :production
 ruby "2.0.0"

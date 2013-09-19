@@ -8,7 +8,6 @@ class MessagesController < ApplicationController
     user = User.find(params[:id])
     result = []
     user.contacts.each do |contact|
-
        result.push({contact: contact, conversation: Message.where(user: user, contact_id: contact.id)})
     end
     render json: result
