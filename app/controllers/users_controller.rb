@@ -94,6 +94,6 @@ class UsersController < ApplicationController
   def contacts
     user = User.find(params[:id])
     list = user.contacts
-    render json: User.find(list).to_json(except: [:created_at, :updated_at])
+    render json: list.to_json(except: [:created_at, :updated_at])
   end
 end
