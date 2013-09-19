@@ -54,11 +54,29 @@ class UsersController < ApplicationController
   # All messages belonging to a user
   def messages
     # If a contact id was specified, show only messages with that user
+    _messages = {}
     if (contact_id = params[:contact_id]) then
-      render json: Message.where(user_id: params[:id], contact_id: contact_id)
+      _messages = Message.where(user_id: params[:id], contact_id: contact_id)
     else
-      render json: Message.where(user_id: params[:id]).to_json(except: [:created_at, :updated_at])
+      _messages = Message.where(user_id: params[:id]).to_json(except: [:created_at, :updated_at])
     end
+
+    ret = Jbuilder.encode do |json|
+      json.messages _messages do |message|
+        json.(message, :content, :user_id, :contact_id, :song_id, :sent, :created_at)
+
+        if message.song_id
+          song = Song.find(message.song_id)
+	  json.song do
+            json.(song, :title, :artist, :category_id, :created_at)
+	    json.path song.path
+          end
+        end
+
+	json.contact User.find(message.contact_id)
+      end
+    end
+    render json: ret
   end
 
   def reset_password
