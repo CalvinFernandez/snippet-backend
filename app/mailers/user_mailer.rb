@@ -11,7 +11,7 @@ class UserMailer < ActionMailer::Base
     end
     @message = message
     @url = 'http://www.lyricoo.com'
-    @song = Song.find(message.song_id)
+    @song = message.song_id ? Song.find(message.song_id) : nil
 
     mail(to: user.email, subject: "#{@referrerName} sent you a message on Lyricoo!")
   end
