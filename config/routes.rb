@@ -1,4 +1,5 @@
 Snippet::Application.routes.draw do
+  get "stats/songs"
   get "stats/all"
   root :to => redirect('/docs.html')
 
