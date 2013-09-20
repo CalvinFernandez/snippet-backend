@@ -5,7 +5,7 @@ class StatsController < ApplicationController
     @users = User.all
     @messages = Message.all
     @invitedUsers = User.where("users.referrer IS NOT NULL")
-    @percentMessagesWithSongs = (Message.where("messages.song_id IS NOT NULL").size * 100) / @messages.size
+    @percentMessagesWithSongs = @messages.size == 0 ? "N/A" : (Message.where("messages.song_id IS NOT NULL").size * 100) / @messages.size
   end
 
   def users
