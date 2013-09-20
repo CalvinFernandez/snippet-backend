@@ -1,0 +1,23 @@
+<table id="categories"></table>
+
+<script>
+    $().ready(function(){
+        $('#categories').dataTable( {
+            "bJQueryUI": true,
+            "aaData":
+            <%= @category_data.to_s.html_safe%>
+
+            ,
+            "aoColumns": [
+                { "sTitle": "ID" },
+                { "sTitle": "Name" },
+                { "sTitle": "# of Songs" },
+                { "sTitle": "# Sent" }
+            ]
+        } );
+
+
+    });
+
+
+</script>

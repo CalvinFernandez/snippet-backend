@@ -1,12 +1,11 @@
 <table id="users"></table>
 
 <script>
-    $().ready(function(){
-        $('#users').dataTable( {
+    $().ready(function () {
+        $('#users').dataTable({
+            "bJQueryUI": true,
             "aaData":
-                <%= @user_data.to_s.html_safe%>
-
-            ,
+            <%= @user_data.to_s.html_safe%>,
             "aoColumns": [
                 { "sTitle": "ID" },
                 { "sTitle": "Email" },
@@ -17,33 +16,13 @@
                 { "sTitle": "Gender"},
                 { "sTitle": "# Of Contacts"},
                 { "sTitle": "Messages Sent"},
+                { "sTitle": "Messages Received"},
                 { "sTitle": "Last Activity"}
             ]
-        } );
-
-        $("#users th").each(function(){
-
-            $(this).addClass("ui-state-default");
-
         });
-        $("#users td").each(function(){
 
-            $(this).addClass("ui-widget-content");
-
-        });
-        $("#users tr").hover(
-                function()
-                {
-                    $(this).children("td").addClass("ui-state-hover");
-                },
-                function()
-                {
-                    $(this).children("td").removeClass("ui-state-hover");
-                }
-        );
-        $("#users tr").click(function(){
-
-            $(this).children("td").toggleClass("ui-state-highlight");
-        });
+        //formatTable();
     });
+
+
 </script>
