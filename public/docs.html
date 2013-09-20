@@ -97,13 +97,30 @@
 <p>'contact_id' - Optional. Messages only between the user with this id</p>
 
 <h3>Contacts for a specific user</h3>
-/users/contacts/
+/users/contacts
 <p>Params:</p>
 
 <p>'id' - User id</p>
 
+<h3>Update user info</h3>
+/users/update
+<p>Params:</p>
+<p>'id' - User id</p>
+<p>Optional Params:</p>
+<p>'age'</p>
+<p>'gender' - Either 'male' or 'female'</p>
+<p>'first_name'</p>
+<p>'last_name'</p>
+
 
 <h2>**** Messages **** </h2>
+
+<h3>Get all messages for a user</h3>
+<p>/messages/all</p>
+<p>Params:</p>
+<p>'id' - User id</p>
+
+<p>Returns an array on conversations matched to each contact the user has.</p>
 
 <h3>Get a specific message</h3>
 

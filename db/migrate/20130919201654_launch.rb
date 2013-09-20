@@ -13,14 +13,14 @@ class Launch < ActiveRecord::Migration
     #rescue
     #  puts "Failed to create and deliver eli_hart"
     #end
-    #
-    #begin
-    #  meredith_eggers = User.create(first_name: 'Meredith', last_name: 'Eggers', age: '30', gender: 'female', email: 'meredith@iteratti.com', password: 'RJTKKLRD')
-    #  UserMailer.launch(meredith_eggers, 'RJTKKLRD').deliver
-    #rescue
-    #  puts "Failed to create and deliver meredith_eggers"
-    #end
-    #
+
+    begin
+      meredith_eggers = User.create(first_name: 'Meredith', last_name: 'Eggers', age: '30', gender: 'female', email: 'meredith@iteratti.com', password: 'RJTKKLRD')
+      UserMailer.launch(meredith_eggers, 'RJTKKLRD').deliver
+    rescue
+      puts "Failed to create and deliver meredith_eggers"
+    end
+
     #begin
     #  libby_lefever = User.create(first_name: 'Libby', last_name: 'Lefever', age: '30', gender: 'female', email: 'libbyfever@yahoo.com', password: 'RJSPEVOZ')
     #  UserMailer.launch(libby_lefever, 'RJSPEVOZ').deliver
