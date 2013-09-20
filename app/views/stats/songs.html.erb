@@ -1,0 +1,24 @@
+<table id="songs"></table>
+
+<script>
+    $().ready(function(){
+        $('#songs').dataTable( {
+            "bJQueryUI": true,
+            "aaData":
+            <%= @song_data.to_s.html_safe%>
+
+            ,
+            "aoColumns": [
+                { "sTitle": "ID" },
+                { "sTitle": "Title" },
+                { "sTitle": "Artist" },
+                { "sTitle": "Category" },
+                { "sTitle": "Times Sent"}
+            ]
+        } );
+
+
+    });
+
+
+</script>
