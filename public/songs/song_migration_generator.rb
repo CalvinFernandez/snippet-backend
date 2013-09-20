@@ -9,17 +9,7 @@ File.open('song_migration.rb', 'w') do |migration|
   migration.puts("class AddSongs < ActiveRecord::Migration")
   migration.puts("def change")
 
-  # Add function to retrieve or create category
-  migration.puts <<CatFunction
-    # Retrieve a category by name or create it if it doesn't exist
-    def getCategory(category_name)
-      begin
-        Category.find_by! name: category_name
-      rescue
-        Category.create(name: category_name)
-      end
-    end
-CatFunction
+
 
   # Parse each file name and add it to the migration
   file_names.each do |f|
@@ -38,6 +28,11 @@ CatFunction
     # letter of each word is capitalized
     info.map! { |line| line.split('_').map(&:capitalize).join(' ') }
 
+    if info.size != 3
+      puts "Bad split for #{f}"
+      next
+    end
+
     title = info[0]
     artist = info[1]
     category = info[2]
@@ -46,8 +41,18 @@ CatFunction
       puts f
     end
 
-    # Add line to migration
-    migration.puts("Song.create(title: \"#{title}\", artist: \"#{artist}\", category: getCategory(\"#{category}\"), format: \"#{format}\")")
+    # Add category to migration file
+    migration.puts <<MIGRATE
+    # Retrieve a category by name
+    category = nil
+    begin
+        category = Category.find_by! name: "#{category}"
+        Song.create(title: \"#{title}\", artist: \"#{artist}\", category: category, format: \"#{format}\")
+    rescue
+      puts "error adding #{title} : #{artist} : #{category}"
+    end
+
+MIGRATE
   end
 
   # Add end tags
