@@ -6,8 +6,8 @@ File.open('launch_migration.rb', 'w') do |migration|
   migration.puts("def change")
 
   CSV.foreach('testers.csv') do |row|
-    last_name = row[0]
-    first_name = row[1]
+    last_name = row[0].to_s.capitalize
+    first_name = row[1].to_s.capitalize
     age = row[2]
     gender = row[3] == 'm' ? 'male' : 'female'
     email = row[4]
