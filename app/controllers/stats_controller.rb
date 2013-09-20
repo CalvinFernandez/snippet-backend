@@ -1,4 +1,6 @@
 class StatsController < ApplicationController
+  skip_before_action :require_login
+
   def all
     @users = User.all
     @messages = Message.all
@@ -11,11 +13,20 @@ class StatsController < ApplicationController
     @user_data = []
 
     users.each do |user|
-      last_activity = Message.where(user_id: user.id).order('created_at DESC')[0].created_at
+      begin
+        last_activity = Message.where(user_id: user.id).order('created_at DESC')[0].created_at.to_s
+      rescue
+        last_activity = "never"
+      end
+
       data = [user.id, user.email, user.created_at.to_s, user.first_name.to_s, user.last_name.to_s,
               user.age.to_s, user.gender.to_s, user.contacts.size, user.messages.size,
-              last_activity.to_s]
+              last_activity]
       @user_data.push(data)
     end
+  end
+
+  def songs
+
   end
 end
