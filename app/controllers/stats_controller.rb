@@ -19,12 +19,14 @@ class StatsController < ApplicationController
         last_activity = "never"
       end
 
+      referrer = user.referrer ? user.referrer : "Launch"
+
       msgSent = Message.where(user: user, sent: true)
       msgRcv= Message.where(user: user, sent: false)
 
       data = [user.id, user.email, user.created_at.to_s, user.first_name.to_s, user.last_name.to_s,
               user.age.to_s, user.gender.to_s, user.contacts.size, msgSent.size, msgRcv.size,
-              last_activity]
+              last_activity, referrer]
       @user_data.push(data)
     end
   end
