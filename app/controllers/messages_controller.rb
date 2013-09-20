@@ -17,8 +17,13 @@ class MessagesController < ApplicationController
   # Create a new message
   def new
     # Get message details from post parameters
-    src = User.find(params[:src_id])
+
     dst = params[:dst_email]
+    if params[:dst_id]
+      # allow client to specify id in new post params
+      dst = User.find(params[:dst_id]).email
+    end   
+    src = User.find(params[:src_id])
     content = params[:content]
     song = params[:song_id]
 
