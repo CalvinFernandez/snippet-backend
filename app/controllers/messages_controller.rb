@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
     begin
       contact = User.find_by! email: dst
     rescue
-      generated_password = Devise.friendly_token.first(8)
+      generated_password = (0...8).map { (65 + rand(26)).chr }.join
       contact = User.create!(email: dst, password: generated_password, referrer: src.email)
     end
 
