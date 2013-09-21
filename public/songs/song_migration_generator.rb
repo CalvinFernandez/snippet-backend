@@ -15,18 +15,29 @@ File.open('song_migration.rb', 'w') do |migration|
   file_names.each do |f|
 
 
+
     # File is of the form song_title-artist_name-category_name.format
     # Save format type and then remove file extension
     format = File.extname(f)
     if (format == '.rb' || format == '.rb~')
       next
     end
+
+    # Check for spaces
+    if(f.match(" "))
+      puts "#{f} contains a space. Skipping!"
+      next
+    end
+
+    # Remove format extension and split into title, artist, category
     info = f.chomp(format).split('-')
 
 
     # Replace underscores with spaces, and make sure only the first
     # letter of each word is capitalized
     info.map! { |line| line.split('_').map(&:capitalize).join(' ') }
+
+
 
     if info.size != 3
       puts "Bad split for #{f}"

@@ -75,15 +75,6 @@ def change
     # Retrieve a category by name
     category = nil
     begin
-        category = Category.find_by! name: "Jock Jams"
-        Song.create(title: "Monday Night  Football", artist: "Hank Williams", category: category, format: ".m4a")
-    rescue
-      puts "error adding Monday Night  Football : Hank Williams : Jock Jams"
-    end
-
-    # Retrieve a category by name
-    category = nil
-    begin
         category = Category.find_by! name: "Finally Friday"
         Song.create(title: "Look Out Weekend", artist: "Kid Sister", category: category, format: ".m4a")
     rescue
@@ -151,15 +142,6 @@ def change
         Song.create(title: "Grenade", artist: "Bruno Mars", category: category, format: ".m4a")
     rescue
       puts "error adding Grenade : Bruno Mars : Lovin' You"
-    end
-
-    # Retrieve a category by name
-    category = nil
-    begin
-        category = Category.find_by! name: "Selfies"
-        Song.create(title: "Too Hot To Handle", artist: "Ufo", category: category, format: ".m4a")
-    rescue
-      puts "error adding Too Hot To Handle : Ufo : Selfies"
     end
 
     # Retrieve a category by name
@@ -277,15 +259,6 @@ def change
         Song.create(title: "Crazy For You", artist: "Adele", category: category, format: ".m4a")
     rescue
       puts "error adding Crazy For You : Adele : Bring On The Flirt"
-    end
-
-    # Retrieve a category by name
-    category = nil
-    begin
-        category = Category.find_by! name: "Hang In"
-        Song.create(title: "Stuck In A Moment You Can't Get Out  Of", artist: "U2", category: category, format: ".m4a")
-    rescue
-      puts "error adding Stuck In A Moment You Can't Get Out  Of : U2 : Hang In"
     end
 
     # Retrieve a category by name
@@ -484,15 +457,6 @@ def change
         Song.create(title: "Bohemian Rhapsody", artist: "Queen", category: category, format: ".m4a")
     rescue
       puts "error adding Bohemian Rhapsody : Queen : Help Me!"
-    end
-
-    # Retrieve a category by name
-    category = nil
-    begin
-        category = Category.find_by! name: "Booze Cruise"
-        Song.create(title: "I Love This Bar", artist: "Toby Keith", category: category, format: ".m4a")
-    rescue
-      puts "error adding I Love This Bar : Toby Keith : Booze Cruise"
     end
 
     # Retrieve a category by name
@@ -714,6 +678,15 @@ def change
     # Retrieve a category by name
     category = nil
     begin
+        category = Category.find_by! name: "Jock Jams"
+        Song.create(title: "Monday Night Football", artist: "Hank Williams", category: category, format: ".m4a")
+    rescue
+      puts "error adding Monday Night Football : Hank Williams : Jock Jams"
+    end
+
+    # Retrieve a category by name
+    category = nil
+    begin
         category = Category.find_by! name: "Booze Cruise"
         Song.create(title: "Shot For Me", artist: "Drake", category: category, format: ".m4a")
     rescue
@@ -772,6 +745,15 @@ def change
         Song.create(title: "Vamos A La Playa", artist: "Loona", category: category, format: ".m4a")
     rescue
       puts "error adding Vamos A La Playa : Loona : Let's Get Outta Town"
+    end
+
+    # Retrieve a category by name
+    category = nil
+    begin
+        category = Category.find_by! name: "Jock Jams"
+        Song.create(title: "Na Na Na Na Hey Hey", artist: "Steam", category: category, format: ".m4a")
+    rescue
+      puts "error adding Na Na Na Na Hey Hey : Steam : Jock Jams"
     end
 
     # Retrieve a category by name
@@ -943,15 +925,6 @@ def change
         Song.create(title: "You've Got A Friend In Me", artist: "Randy Newman &lyle Lovett", category: category, format: ".m4a")
     rescue
       puts "error adding You've Got A Friend In Me : Randy Newman &lyle Lovett : Bro' Ballads"
-    end
-
-    # Retrieve a category by name
-    category = nil
-    begin
-        category = Category.find_by! name: "Jock Jams"
-        Song.create(title: "Na Na  Na Na Hey Hey", artist: "Steam", category: category, format: ".m4a")
-    rescue
-      puts "error adding Na Na  Na Na Hey Hey : Steam : Jock Jams"
     end
 
     # Retrieve a category by name
@@ -1227,15 +1200,6 @@ def change
     # Retrieve a category by name
     category = nil
     begin
-        category = Category.find_by! name: "Finally Friday"
-        Song.create(title: "No sleep", artist: "Wiz khalifa", category: category, format: ".m4a")
-    rescue
-      puts "error adding No sleep : Wiz khalifa : Finally Friday"
-    end
-
-    # Retrieve a category by name
-    category = nil
-    begin
         category = Category.find_by! name: "Selfies"
         Song.create(title: "I Am Woman", artist: "Helen Reddy", category: category, format: ".m4a")
     rescue
@@ -1317,6 +1281,15 @@ def change
     # Retrieve a category by name
     category = nil
     begin
+        category = Category.find_by! name: "Hang In"
+        Song.create(title: "Stuck In A Moment You Can't Get Out Of", artist: "U2", category: category, format: ".m4a")
+    rescue
+      puts "error adding Stuck In A Moment You Can't Get Out Of : U2 : Hang In"
+    end
+
+    # Retrieve a category by name
+    category = nil
+    begin
         category = Category.find_by! name: "Let's Get It On"
         Song.create(title: "Let's Spend The Night Together", artist: "The Rolling Stones", category: category, format: ".m4a")
     rescue
@@ -1339,6 +1312,15 @@ def change
         Song.create(title: "Hate That I Love You", artist: "Rihanna", category: category, format: ".m4a")
     rescue
       puts "error adding Hate That I Love You : Rihanna : Apology Accepted"
+    end
+
+    # Retrieve a category by name
+    category = nil
+    begin
+        category = Category.find_by! name: "Selfies"
+        Song.create(title: "Too Hot To Handle", artist: "Ufo", category: category, format: ".m4a")
+    rescue
+      puts "error adding Too Hot To Handle : Ufo : Selfies"
     end
 
     # Retrieve a category by name
@@ -1668,15 +1650,6 @@ def change
     # Retrieve a category by name
     category = nil
     begin
-        category = Category.find_by! name: "Jock Jams"
-        Song.create(title: "Who Let The Dogs  Out", artist: "Baha Men", category: category, format: ".m4a")
-    rescue
-      puts "error adding Who Let The Dogs  Out : Baha Men : Jock Jams"
-    end
-
-    # Retrieve a category by name
-    category = nil
-    begin
         category = Category.find_by! name: "You Suck"
         Song.create(title: "Fuck You", artist: "Cee Lo Green", category: category, format: ".m4a")
     rescue
@@ -1924,6 +1897,15 @@ def change
         Song.create(title: "Get The Party Started", artist: "Pink", category: category, format: ".m4a")
     rescue
       puts "error adding Get The Party Started : Pink : Finally Friday"
+    end
+
+    # Retrieve a category by name
+    category = nil
+    begin
+        category = Category.find_by! name: "Jock Jams"
+        Song.create(title: "Who Let The Dogs Out", artist: "Baha Men", category: category, format: ".m4a")
+    rescue
+      puts "error adding Who Let The Dogs Out : Baha Men : Jock Jams"
     end
 
 end
