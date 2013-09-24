@@ -42,9 +42,9 @@ class MessagesController < ApplicationController
     if generated_password
       UserMailer.invitation(contact, generated_password, src, received).deliver
     else
-      if contact.first_message_of_the_day
-        MessageMailer.new_message_alert(src, contact, received).deliver
-      end
+      #if contact.first_message_of_the_day
+      MessageMailer.new_message_alert(src, contact, received).deliver
+      #end
       begin
         ESHQ.send(
             :channel => contact.id,
