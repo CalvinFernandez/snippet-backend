@@ -67,25 +67,25 @@ class UsersController < ApplicationController
 
         if message.song_id
           song = Song.find(message.song_id)
-	  json.song do
+          json.song do
             json.(song, :title, :artist, :category_id, :created_at)
-	    json.path song.path
+            json.path song.path
           end
         end
 
-	json.contact User.find(message.contact_id)
+        json.contact User.find(message.contact_id)
       end
     end
     render json: ret
   end
 
   def reset_password
-    # Send an email with instructs on how to reset the password
+    # Send an email with a new password
     begin
-      user = User.find(params[:id])
-      if user.send_reset_password_instructions
-        render json: {success: true}
-      end
+      user = User.where(email: params[:email]).first
+      password = (0...8).map { (65 + rand(26)).chr }.join
+      UserMailer.reset_password(user, password).deliver
+      render json: {success: true}
     rescue
       render json: {success: false}
     end
