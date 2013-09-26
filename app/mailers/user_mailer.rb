@@ -22,4 +22,9 @@ class UserMailer < ActionMailer::Base
 
     mail(to: user.email, from: "Meredith Eggers <meredith@lyricoo.com>", subject:  "Welcome to the Lyricoo launch!")
   end
+
+  def reset_password(user, password)
+    @password = password
+    mail(to: user.email, from: "Lyricoo <accounts@lyricoo.com>", subject:  "Password reset")
+  end
 end
