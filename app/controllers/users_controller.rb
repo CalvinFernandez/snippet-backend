@@ -84,8 +84,12 @@ class UsersController < ApplicationController
     begin
       user = User.where(email: params[:email]).first
       password = (0...8).map { (65 + rand(26)).chr }.join
-      UserMailer.reset_password(user, password).deliver
-      render json: {success: true}
+      if user.reset_password!(password, password)
+        UserMailer.reset_password(user, password).deliver
+        render json: {success: true}
+      else
+        render json: {success: false}
+      end
     rescue
       render json: {success: false}
     end
