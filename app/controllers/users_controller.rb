@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     # Return the user details if successful and the error messages if unsuccessful
     if user.save
-      render json: {success: true, user: user.as_json(only: [:authentication_token, :id, :email, :first_name, :last_name, :age, :gender])}, status: 201
+      render json: {success: true, user: user.as_json(only: [:authentication_token, :id, :email, :username, :age, :gender])}, status: 201
     else
       render json: {:success => false, :errors => user.errors.messages}, status: 422
     end
@@ -37,12 +37,8 @@ class UsersController < ApplicationController
         user.update!(gender: gender)
       end
 
-      if first_name = params[:first_name]
-        user.update!(first_name: first_name)
-      end
-
-      if last_name = params[:last_name]
-        user.update!(last_name: last_name)
+      if username = params[:username]
+        user.update!(username: username)
       end
 
       render json: {success: true, user: user.as_json(except: [:created_at, :updated_at])}

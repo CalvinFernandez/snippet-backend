@@ -8,8 +8,6 @@ class UserTest < ActiveSupport::TestCase
 
   test "create user" do
     usr = User.new(:email => "test@test.com", :username => "helloworld", :password => "password")
-    require 'pry'
-    binding.pry
     assert usr.save, "Should be able to save"
   end
 
