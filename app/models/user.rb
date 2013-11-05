@@ -7,8 +7,12 @@ class User < ActiveRecord::Base
 
   has_many :messages
 
+
   #validates :gender, :inclusion => %w(male female)
   #validates :age, numericality: { only_integer: true }
+
+  validates :username, presence: true
+  validates :email, presence: true
 
   has_many :contacts, :through => :messages, :uniq => true
 

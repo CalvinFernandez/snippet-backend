@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   # Create a new user
   def new
-    user = User.new(email: params[:email], password: params[:password], first_name: params[:first_name], last_name: params[:last_name], age: params[:age], gender: params[:gender])
+    user = User.new(email: params[:email], username: params[:username], password: params[:password])
 
     # Return the user details if successful and the error messages if unsuccessful
     if user.save
