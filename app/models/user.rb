@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :messages
 
+  has_many :friendships
+  has_many :friends, :through => :friendships
 
   #validates :gender, :inclusion => %w(male female)
   #validates :age, numericality: { only_integer: true }
