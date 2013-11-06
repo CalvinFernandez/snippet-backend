@@ -5,6 +5,10 @@ Snippet::Application.routes.draw do
   # Use the sessions controller for login and logout
   devise_for(:users, controllers: { sessions: 'sessions' }, :sign_out_via => [:post, :delete])
 
+  resources :users do 
+   resources :friends, :only => [:index, :create, :update, :destroy]
+  end
+
   # Eventsource connection
   post "/eshq/socket", to: 'messages#open_update_connection'
 

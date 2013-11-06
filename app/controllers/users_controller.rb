@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :generate_new_password]
 
   # List all users
-  def all
+  def index 
     render json: User.all.to_json(except: [:created_at, :updated_at])
   end
 
