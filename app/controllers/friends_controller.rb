@@ -1,5 +1,4 @@
 class FriendsController < ApplicationController
-  before_filter :authenticate_user!
 
   def index
     user = User.find_by_id(params[:user_id])
@@ -31,7 +30,7 @@ class FriendsController < ApplicationController
         render :json => current_user.friends, :status => 201 
       else 
         # already been friended. don't add again
-        render :json => {}, :status => 400
+        render :json => current_user.friends, :status => 400
       end
     else 
       render :json => {}, :status => 400
