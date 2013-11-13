@@ -5,7 +5,8 @@ Snippet::Application.routes.draw do
   # Use the sessions controller for login and logout
   devise_for(:users, controllers: { sessions: 'sessions' }, :sign_out_via => [:post, :delete])
 
-  get 'users/messages/:id', :to => 'users#messages'
+  get 'users/messages', :to => 'users#messages'
+  post 'users/reset_password', :to => 'users#reset_password'
 
   resources :users do 
    resources :friends, :only => [:index, :create, :update, :destroy]
