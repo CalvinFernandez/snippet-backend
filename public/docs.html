@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lyricoo API</title>
+</head>
+<body>
+
+<h1>API</h1>
+-----------
+
+<p>API endpoints for the snippet backend
+
+<p>
+
+<p>All endpoints, except those for account login and creation, require authentication</p>
+
+<p>If authentication fails, a 401 status code is returned as well as an error message.</p>
+
+<p>For valid authentication, the authentication token received on login or account creation must be passed as the
+    'auth_token' parameter. For example, /users/all?auth_token=-ibgefjRw6VSEj97VPgx</p>
+
+<h2>**** Authorization ****</h2>
+
+<h3>Create a new account </h3>
+
+<p>POST request to /users/new</p>
+
+<p>Params:</p>
+
+<p>'email' - User email</p>
+
+<p>'password' - User password</p>
+
+<p>*Does NOT require authentication</p>
+
+<p>On failure the error messages are returned.</p>
+
+<p>On success a user object is returned which contains the user_id, email, and authentication_token.</p>
+
+<h3>Login to an existing account </h3>
+
+<p>POST request to /users/sign_in</p>
+
+<p>Params:</p>
+
+<p>'email' - User email</p>
+
+<p>'password' - User password</p>
+
+<p>*Does NOT require authentication </p>
+
+<p>On failure an error message is returned.</p>
+
+<p>On success the 'auth_token' and 'id' are returned. 'id' is the user_id of the signed in user, and 'auth_token' is the
+    authorization token that needs to be included with each api call. </p>
+
+<h3>Password Reset </h3>
+
+<p>/users/reset_password</p>
+
+<p>Params:</p>
+
+<p>'id' - User id</p>
+
+<p>*Does NOT require authentication</p>
+
+<p>Sends an email to the user that allows them to reset their password</p>
+
+
+<h3>Logout</h3>
+
+<p>POST request to /users/sign_out
+
+<p>Params:</p>
+
+<p>'email' - Email of user to log out</p>
+
+<p>A successful call to logout deletes the authentication token so that no further requests can be made using it.</p>
+
+<h2>**** Users ****</h2>
+
+<h3>Get all users</h3>
+/users/all
+
+<h3>Details for a specific user</h3>
+/users/show/
+<p>Params: 'id'</p>
+
+<h3>All messages belonging to a user</h3>
+
+<p>/users/messages</p>
+
+<p>Params:</p>
+
+<p>'id' - User id</p>
+
+<p>'contact_id' - Optional. Messages only between the user with this id</p>
+
+<h3>Contacts for a specific user</h3>
+/users/contacts
+<p>Params:</p>
+
+<p>'id' - User id</p>
+
+<h3>Update user info</h3>
+/users/update
+<p>Params:</p>
+<p>'id' - User id</p>
+<p>Optional Params:</p>
+<p>'age'</p>
+<p>'gender' - Either 'male' or 'female'</p>
+<p>'first_name'</p>
+<p>'last_name'</p>
+
+
+<h2>**** Messages **** </h2>
+
+<h3>Get all messages for a user</h3>
+<p>/messages/all</p>
+<p>Params:</p>
+<p>'id' - User id</p>
+
+<p>Returns an array on conversations matched to each contact the user has.</p>
+
+<h3>Get a specific message</h3>
+
+<p>/messages/show/</p>
+
+<p>Params:</p>
+
+<p>'id' - Message id</p>
+
+<h3>Create a new message</h3>
+
+<p>POST request to /messages/new </p>
+
+<p>Parameters: </p>
+
+<p>'src_id' - The user_id of the sender </p>
+
+<p>'dst_email' - The email address of the receiver. This can be an address that doesn't yet have an account; An account
+    will be created for them. </p>
+
+<p>'content' - The message body </p>
+
+<p>'song_id' - The song_id of a song to include. Leave this blank if the message is just text. </p>
+
+<h2>**** Songs **** </h2>
+
+<h3>Show all songs</h3>
+/songs/all
+
+<h3>A specific song</h3>
+/songs/show/
+<p>Params:</p>
+
+<p>'id' - Song id</p>
+
+<h2>**** Categories ****</h2>
+
+<h3>All categories</h3>
+/categories/all
+
+<h3>All songs in a specific category</h3>
+/categories/songs
+<p>Params:</p>
+
+<p>'id' - Category id</p>
+
+
+</body>
+</html>

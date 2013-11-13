@@ -1,0 +1,7 @@
+<%=@srcName%> says "<%=@message.content%>"
+
+<% if @song %>
+They also sent you a song - <%= @song.title %>!
+<% end %>
+
+Go to <%= @url %> to see your message and send a reply!

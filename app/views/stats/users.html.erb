@@ -1,0 +1,29 @@
+<table id="users"></table>
+
+<script>
+    $().ready(function () {
+        $('#users').dataTable({
+            "bJQueryUI": true,
+            "aaData":
+            <%= @user_data.to_s.html_safe%>,
+            "aoColumns": [
+                { "sTitle": "ID" },
+                { "sTitle": "Email" },
+                { "sTitle": "Join Date" },
+                { "sTitle": "First Name" },
+                { "sTitle": "Last Name"},
+                { "sTitle": "Age"},
+                { "sTitle": "Gender"},
+                { "sTitle": "# Of Contacts"},
+                { "sTitle": "Messages Sent"},
+                { "sTitle": "Messages Received"},
+                { "sTitle": "Last Activity"},
+                { "sTitle": "Invited By"}
+            ]
+        });
+
+        //formatTable();
+    });
+
+
+</script>

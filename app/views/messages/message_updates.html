@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Snippet</title>
+
+    <script src="http://app.eventsourcehq.com/es.js"></script>
+
+</head>
+<body>
+Messages:
+<div id='msg'></div>
+
+<script>// connect to server like normal
+var eshq = new ESHQ("1");
+
+eshq.onopen = function(e) {
+    console.log("eshq opened");
+};
+
+eshq.onmessage = function(e) {
+    var msg = e.data;
+    document.getElementById('msg').appendChild(document.createTextNode(msg));
+};
+
+eshq.onerror = function(e) {
+    console.log(e);
+};
+</script>
+</body>
+</html>
+
+</body>
+</html>

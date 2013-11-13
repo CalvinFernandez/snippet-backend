@@ -1,0 +1,49 @@
+<table class='jtable'>
+  <thead>
+  <tr>
+    <th># Of Users</th>
+    <th>Total Messages Sent</th>
+    <th>% Messages w/ Songs</th>
+    <th># of Invites</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= @users.size%></td>
+    <td><%= @messages.size%></td>
+    <td><%=@percentMessagesWithSongs%>%</td>
+    <td><%=@invitedUsers.size%></td>
+  </tr>
+  </tbody>
+</table>
+
+<script>
+    $().ready(function(){
+        $(".jtable th").each(function(){
+
+            $(this).addClass("ui-state-default");
+
+        });
+        $(".jtable td").each(function(){
+
+            $(this).addClass("ui-widget-content");
+
+        });
+        $(".jtable tr").hover(
+                function()
+                {
+                    $(this).children("td").addClass("ui-state-hover");
+                },
+                function()
+                {
+                    $(this).children("td").removeClass("ui-state-hover");
+                }
+        );
+        $(".jtable tr").click(function(){
+
+            $(this).children("td").toggleClass("ui-state-highlight");
+        });
+
+    });
+</script>
+
