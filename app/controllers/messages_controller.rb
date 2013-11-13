@@ -1,23 +1,31 @@
 class MessagesController < ApplicationController
   # Details of a specific message
+ 
+  # returns all messages for a specific user 
+  # or an enitire conversation between a user
+  # and a specified contact id
+  def index 
+    messages = {}
+    if params[:user_id]      
+      user = User.find(params[:user_id])
+      if params[:id]
+        messages = user.messages.where(:contact_id => params[:id]);
+      else
+        messages = user.messages 
+      end
+      render json: Message.to_conversations(messages).to_json(methods: :song)
+    else
+      render :json => {}, :status => 403
+    end
+  end
+
   def show
     render json: Message.find(params[:id]).to_json(methods: :song)
   end
-
-  def all
-    user = User.find(params[:id])
-    result = []
-
-    user.contacts.each do |contact|
-      result.push({contact: contact, conversation: Message.where(user: user, contact_id: contact.id)})
-    end
-    render json: result.to_json(methods: :song)
-  end
-
+  
   # Create a new message
   def new
     # Get message details from post parameters
-
     dst = params[:dst_email]
     if params[:dst_id]
       # allow client to specify id in new post params

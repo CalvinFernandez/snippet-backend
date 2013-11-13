@@ -15,6 +15,25 @@ class Message < ActiveRecord::Base
   include ActiveModel::Validations
   validates_with MessageValidator
 
+  #
+  # Returns the array of messages as a hash 
+  # in conversation style
+  #
+  def self.to_conversations(messages)
+    conversations = {}  
+    messages.each do |message|  
+      contact_id = message.contact_id
+      if !conversations[contact_id]
+        conversations[contact_id] = {
+          contact: User.find(contact_id), 
+          conversation: []
+        }
+      end
+      conversations[contact_id][:conversation] << message  
+    end
+    conversations
+  end
+
   def song
     begin
       Song.find(self.song_id)

@@ -9,8 +9,11 @@ Snippet::Application.routes.draw do
   post 'users/reset_password', :to => 'users#reset_password'
 
   resources :users do 
-   resources :friends, :only => [:index, :create, :update, :destroy]
+   resources :friends,  :only => [:index, :create, :update, :destroy]
+   resources :messages, :only => [:index]
   end
+  
+  resources :messages
 
   # Eventsource connection
   post "/eshq/socket", to: 'messages#open_update_connection'
