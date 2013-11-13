@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   # Create a new user
   def new
-    user = User.new(email: params[:email], username: params[:username], password: params[:password])
+    user = User.new(User.sanitize(params))
 
     # Return the user details if successful and the error messages if unsuccessful
     if user.save
@@ -24,26 +24,11 @@ class UsersController < ApplicationController
     end
   end
 
-  # Update name, age, or gender
+  # Update user
   def update
     begin
       user = User.find(params[:id])
-
-      if age = params[:age]
-        user.update!(age: age)
-      end
-
-      if gender = params[:gender]
-        user.update!(gender: gender)
-      end
-
-      if username = params[:username]
-        user.update!(username: username)
-      end
-      
-      if number = params[:phone_number]
-        user.update!(phone_number: number)
-      end
+      user.update_attributes!(User.sanitize(params))
 
       render json: {success: true, user: user.as_json(except: [:created_at, :updated_at])}
     rescue
