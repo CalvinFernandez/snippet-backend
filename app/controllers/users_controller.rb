@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     # Return the user details if successful and the error messages if unsuccessful
     if user.save
-      render :json => {success: true, user: user.as_json(except: [:created_at, :update_at])}, status: 201
+      render :json => {success: true, :authentication_token => user.authentication_token, user: user.as_json(except: [:created_at, :update_at])}, status: 201
     else
       render json: {:success => false, :errors => user.errors.messages}, status: 422
     end
