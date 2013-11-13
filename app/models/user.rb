@@ -7,8 +7,6 @@ class User < ActiveRecord::Base
 
   has_many :messages
 
-  attr_accessible :age, :gender, :email, :password, :password_confirmation, :username, :phone_number, :display_name, :referrer
-
   has_many :friendships
   has_many :friends, :through => :friendships
 
@@ -19,14 +17,6 @@ class User < ActiveRecord::Base
   validates :email, presence: true
 
   has_many :contacts, :through => :messages, :uniq => true
-
-  def self.sanitize(model)
-    sanitized = {}
-    User.attr_accessible[:default].each do |attr|
-      sanitized[attr] = model[attr] if model[attr]
-    end  
-    sanitized
-  end
 
   def first_message_of_the_day
     puts "Checking first message"

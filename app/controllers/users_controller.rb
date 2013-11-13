@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   # Create a new user
   def new
-    user = User.new(User.sanitize(params))
+    user = User.new(user_params)
 
     # Return the user details if successful and the error messages if unsuccessful
     if user.save
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
     begin
       user = User.find(params[:id])
-      user.update_attributes!(User.sanitize(params))
+      user.update_attributes!(user_params)
 
       render json: {success: true, user: user.as_json(except: [:created_at, :updated_at])}
     rescue
@@ -85,4 +85,9 @@ class UsersController < ApplicationController
     list = user.contacts
     render json: list.to_json(except: [:created_at, :updated_at])
   end
+
+  private
+    def user_params
+      params.require(:user).permit(:email, :password, :password_confirmation, :username, :phone_number, :display_name, :age, :gender, :referrer)
+    end
 end
