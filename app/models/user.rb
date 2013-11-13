@@ -16,8 +16,6 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates :email, presence: true
 
-  has_many :contacts, :through => :messages, :uniq => true
-
   def first_message_of_the_day
     puts "Checking first message"
       begin

@@ -10,7 +10,7 @@ Snippet::Application.routes.draw do
 
   resources :users do 
    resources :friends,  :only => [:index, :create, :update, :destroy]
-   resources :messages, :only => [:index]
+   resources :messages, :only => [:index, :create]
   end
   
   resources :messages
