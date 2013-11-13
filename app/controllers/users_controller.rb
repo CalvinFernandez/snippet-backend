@@ -40,6 +40,10 @@ class UsersController < ApplicationController
       if username = params[:username]
         user.update!(username: username)
       end
+      
+      if number = params[:phone_number]
+        user.update!(phone_number: number)
+      end
 
       render json: {success: true, user: user.as_json(except: [:created_at, :updated_at])}
     rescue
