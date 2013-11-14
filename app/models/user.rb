@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   #validates :gender, :inclusion => %w(male female)
   #validates :age, numericality: { only_integer: true }
 
-  validates :username, presence: true
-  validates :email, presence: true
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 
   def first_message_of_the_day
     puts "Checking first message"
