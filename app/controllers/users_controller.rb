@@ -13,9 +13,8 @@ class UsersController < ApplicationController
   end
 
   # Create a new user
-  def new
+  def create 
     user = User.new(user_params)
-
     # Return the user details if successful and the error messages if unsuccessful
     if user.save
       render :json => {success: true, :authentication_token => user.authentication_token, user: user.as_json(except: [:created_at, :update_at])}, status: 201
