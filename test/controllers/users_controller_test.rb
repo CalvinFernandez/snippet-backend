@@ -6,7 +6,7 @@ class UsersControllerTest < ActionController::TestCase
   end  
   
   test "should create a user" do
-    post :new, :email => 'asdf@asdf.com', :username => 'kdfasdf', :password => 'passwordd'
+    post :create, :email => 'asdf@asdf.com', :username => 'kdfasdf', :password => 'passwordd'
     assert_response :success
   end
   
