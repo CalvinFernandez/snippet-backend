@@ -31,7 +31,7 @@ class Message < ActiveRecord::Base
       end
       conversations[contact_id][:conversation] << message  
     end
-    [conversations] #ugly converstion to array for client side android
+    conversations
   end
 
   def song
