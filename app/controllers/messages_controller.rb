@@ -27,13 +27,13 @@ class MessagesController < ApplicationController
     if params[:user_id] && params[:contact_id]
       user_id = params[:user_id]
 
-      sent = Message.create(params)
+      sent = Message.create(message_params)
 
       params[:user_id] = params[:contact_id]
       params[:contact_id] = user_id
       params[:sent] = false
       
-      received = Message.create(params)
+      received = Message.create(message_params)
 
       if sent.valid? && received.valid?
         render json: sent
@@ -50,4 +50,8 @@ class MessagesController < ApplicationController
 
   end
 
+  private
+    def message_params
+      params.permit(:user_id, :contact_id, :sent, :content, :song_id)
+    end
 end
