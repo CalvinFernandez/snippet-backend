@@ -2,7 +2,7 @@ class Song < ActiveRecord::Base
   belongs_to :category
  
   def as_json(options = {})
-    super(options).merge(:url => path)
+    super(options).merge(:path => path)
   end
  
   def path
