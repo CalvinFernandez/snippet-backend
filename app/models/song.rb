@@ -1,6 +1,10 @@
 class Song < ActiveRecord::Base
   belongs_to :category
-
+ 
+  def as_json(options = {})
+    super(options).merge(:url => path)
+  end
+ 
   def path
     title = self.title.downcase.gsub(' ', '_')
     artist = self.artist.downcase.gsub(' ', '_')
