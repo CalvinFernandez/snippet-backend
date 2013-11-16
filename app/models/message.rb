@@ -42,6 +42,10 @@ class Message < ActiveRecord::Base
     end
   end
 
+  def toGcmMessage
+    Gcm.new(self)  
+  end
+
 end
 
 
