@@ -1,4 +1,6 @@
+
 class MessagesController < ApplicationController
+require 'gcm'
   # Details of a specific message
  
   # returns all messages for a specific user 
