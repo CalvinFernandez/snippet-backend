@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106185615) do
+ActiveRecord::Schema.define(version: 20131116022233) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20131106185615) do
     t.string   "username",               default: "", null: false
     t.integer  "phone_number"
     t.string   "display_name"
+    t.string   "gcm_id"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true
