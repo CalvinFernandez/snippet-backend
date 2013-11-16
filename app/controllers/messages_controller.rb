@@ -31,7 +31,7 @@ class MessagesController < ApplicationController
 
       params[:user_id] = params[:contact_id]
       params[:contact_id] = user_id
-      params[:sent] = false
+      params[:sent] = !params[:sent]
       
       received = Message.create(message_params)
 
