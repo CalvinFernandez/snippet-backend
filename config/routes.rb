@@ -3,7 +3,6 @@ Snippet::Application.routes.draw do
   root :to => redirect('/docs.html')
 
   # Use the sessions controller for login and logout
-  devise_for(:users, controllers: { sessions: 'sessions' }, :sign_out_via => [:post, :delete])
 
   post 'users/reset_password', :to => 'users#reset_password'
 
@@ -11,6 +10,7 @@ Snippet::Application.routes.draw do
    resources :friends,  :only => [:index, :create, :update, :destroy]
    resources :messages, :only => [:index, :create]
   end
+  devise_for(:users, controllers: { sessions: 'sessions' }, :sign_out_via => [:post, :delete])
   
   resources :messages
 
