@@ -6,13 +6,13 @@ namespace :gcm do
       user = User.find_by_email(email)
       libby = User.find_by_email("libby@gmail.com")
 
-      require 'pry'
-      binding.pry
 
       if (user && libby)
         if (user.gcm_id)
           message = Message.create!(content: "Hello, #{email} this is Libby, your overlord!", user_id: user.id, contact_id: libby.id, sent: :false)
+
           gcmMessage = message.toGcmMessage
+
           GcmController.send(gcmMessage) 
         else
           puts "User #{email} doesn't have a GCM id message will not send!"

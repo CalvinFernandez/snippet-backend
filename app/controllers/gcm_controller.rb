@@ -1,4 +1,5 @@
 require 'gcm'
+require 'pry'
 
 class GcmController
 
@@ -6,8 +7,6 @@ class GcmController
   @@gcm = GCM.new(@@API_KEY)
 
   def self.send(gcmMessage)
-    # TODO: Handle this call asynchronously
-    # use a gem like delayed_job
     @@gcm.send_notification(gcmMessage.to, gcmMessage.message)   
   end
 

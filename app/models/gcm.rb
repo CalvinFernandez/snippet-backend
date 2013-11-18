@@ -7,14 +7,19 @@ class Gcm
     @to = []
     @message = {data: {}}
 
-    if message[:contact_id]
-      to_whom = User.find(message[:contact_id])  
+    to_id = message[:contact_id]
+    if message[:sent] == false
+      to_id = message[:user_id]
+    end
+    
+    if to_id
+      to_whom = User.find(to_id)  
       if to_whom.gcm_id 
         @to << to_whom.gcm_id  
       end
     end
 
-    @message[:data] = message
+    @message[:data] = {content: message.content}
 
   end
 end
