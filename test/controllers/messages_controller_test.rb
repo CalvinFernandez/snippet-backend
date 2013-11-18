@@ -17,6 +17,6 @@ class MessagesControllerTest < ActionController::TestCase
     response = get :index, :user_id => @user.id
     jsonResponse = JSON.parse(response.body)
     song = jsonResponse[@user2.id.to_s]["conversation"][0]["song"]
-    assert_not_nil song["url"] 
+    assert_not_nil song["path"] 
   end
 end
