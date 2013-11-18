@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   # Details of a specific message
- 
+
   # returns all messages for a specific user 
   # or an enitire conversation between a user
   # and a specified contact id
@@ -36,6 +36,10 @@ class MessagesController < ApplicationController
       received = Message.create(message_params)
 
       if sent.valid? && received.valid?
+
+        gcmMessage = received.toGcmMessage
+        GcmController.send(gcmMessage)  
+
         render json: sent
       else
         render json: {}, :status => 422
