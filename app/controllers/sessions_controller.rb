@@ -9,7 +9,7 @@ class SessionsController < Devise::SessionsController
     if resource.valid_password?(params[:password])
       sign_in(:user, resource)
       resource.ensure_authentication_token!
-      render :json => {:success => true, :authentication_token => resource.authentication_token, :user => resource.as_json(except: [:created_at, :update_at])}
+      render :json => {:authentication_token => resource.authentication_token, :user => resource.as_json(except: [:created_at, :update_at])}, :status => 201
       return
     end
     invalid_login_attempt
@@ -26,12 +26,12 @@ class SessionsController < Devise::SessionsController
       resource.save
     end
 
-    render :json => {:success => true}
+    render :json => {}, :status => 204
   end
 
   protected
 
   def invalid_login_attempt
-    render :json => {:success => false, :message => "Error with your login or password"}, :status => 401
+    render :json => {:message => "Error with your login or password"}, :status => 401
   end
 end

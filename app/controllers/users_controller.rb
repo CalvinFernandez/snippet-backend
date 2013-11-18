@@ -17,9 +17,9 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     # Return the user details if successful and the error messages if unsuccessful
     if user.save
-      render :json => {success: true, :authentication_token => user.authentication_token, user: user.as_json(except: [:created_at, :update_at])}, status: 201
+      render :json => {:authentication_token => user.authentication_token, user: user.as_json(except: [:created_at, :update_at])}, :status => 201
     else
-      render json: {:success => false, :errors => user.errors.messages}, status: 422
+      render json: {:errors => user.errors.messages}, :status => 422
     end
   end
 
@@ -29,9 +29,9 @@ class UsersController < ApplicationController
       user = User.find(params[:id])
       user.update_attributes!(user_params)
 
-      render json: {success: true, user: user.as_json(except: [:created_at, :updated_at])}
+      render json: {user: user.as_json(except: [:created_at, :updated_at])}
     rescue
-      render json: {success: false, errors: user.errors.messages}
+      render json: {errors: user.errors.messages}, :status => 422
     end
   end
 
@@ -70,12 +70,12 @@ class UsersController < ApplicationController
       password = (0...8).map { (65 + rand(26)).chr }.join
       if user.reset_password!(password, password)
         UserMailer.reset_password(user, password).deliver
-        render json: {success: true}
+        render json: {}, :status => 204
       else
-        render json: {success: false}
+        render json: {}, :status => 422
       end
     rescue
-      render json: {success: false}
+      render json: {}, :status => 400
     end
   end
 
