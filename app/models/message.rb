@@ -46,6 +46,12 @@ class Message < ActiveRecord::Base
     Gcm.new(self)  
   end
 
+  def to_hash
+    hash = {}
+    self.attributes.each { |k, v| hash[k] = v }
+    hash
+  end
+
 end
 
 

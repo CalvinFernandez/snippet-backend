@@ -16,4 +16,10 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
 
+  def to_hash
+    hash = {}
+    self.attributes.each { |k, v| hash[k] = v }
+    hash
+  end
+
 end
