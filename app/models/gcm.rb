@@ -7,10 +7,7 @@ class Gcm
     @to = []
     @message = {data: {}}
  
-    @message[:data][:content] = message[:content]
-    @message[:data][:sent] = message[:sent]
-    @message[:data][:contact_id] = message[:contact_id]
-    @message[:data][:user_id] = message[:user_id]
+    @message[:data] = message.to_hash
     @message[:data][:contact] = message.contact.to_hash
 
     to_id = message[:contact_id]

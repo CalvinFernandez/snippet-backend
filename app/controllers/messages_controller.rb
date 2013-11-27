@@ -50,6 +50,16 @@ class MessagesController < ApplicationController
     end
   end
 
+  def update
+    begin
+      message = Message.find(params[:id])
+      message.update_attributes!(message_updateables)
+      render json: message.to_json(methods: :song)
+    rescue
+      render json: {}, :status => 422
+    end
+  end
+
   def message_updates
 
   end
@@ -57,5 +67,9 @@ class MessagesController < ApplicationController
   private
     def message_params
       params.permit(:user_id, :contact_id, :sent, :content, :song_id)
+    end
+    
+    def message_updateables
+      params.permit(:read)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131116022233) do
+ActiveRecord::Schema.define(version: 20131127191609) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20131116022233) do
     t.boolean  "sent"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "read",       default: false
   end
 
   create_table "songs", force: true do |t|
