@@ -66,7 +66,7 @@ class MessagesController < ApplicationController
 
   private
     def message_params
-      params.permit(:user_id, :contact_id, :sent, :content, :song_id)
+      params.permit(:user_id, :contact_id, :sent, :content, :song_id, :read)
     end
     
     def message_updateables
