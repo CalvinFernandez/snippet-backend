@@ -12,6 +12,10 @@ class MessagesController < ApplicationController
         messages = user.messages.where(:contact_id => params[:contact_id]);
       else
         messages = user.messages 
+
+        user.synced = true;
+        user.save!
+
       end
       render json: Message.to_conversations(messages).to_json(methods: :song)
     else
