@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131127191609) do
+ActiveRecord::Schema.define(version: 20131204150500) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -48,12 +48,12 @@ ActiveRecord::Schema.define(version: 20131127191609) do
     t.integer  "age"
     t.string   "gender"
     t.string   "referrer"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -61,10 +61,11 @@ ActiveRecord::Schema.define(version: 20131127191609) do
     t.string   "authentication_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username",               default: "", null: false
+    t.string   "username",               default: "",    null: false
     t.integer  "phone_number"
     t.string   "display_name"
     t.string   "gcm_id"
+    t.boolean  "synced",                 default: false
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true

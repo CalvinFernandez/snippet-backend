@@ -29,11 +29,16 @@ class MessagesController < ApplicationController
 
       sent = Message.create(message_params)
 
+      contact = User.find(params[:contact_id])
+
       params[:user_id] = params[:contact_id]
       params[:contact_id] = user_id
       params[:sent] = !params[:sent]
       
       received = Message.create(message_params)
+
+      contact.synced = false
+      contact.save!
 
       if sent.valid? && received.valid?
 
