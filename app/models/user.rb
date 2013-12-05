@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   #validates :gender, :inclusion => %w(male female)
   #validates :age, numericality: { only_integer: true }
 
-  validates :username, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
 
   def to_hash
     hash = {}

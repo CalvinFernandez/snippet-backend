@@ -15,4 +15,9 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "usernames shouldn't be case sensitive" do
+    post :create, :email => 'test@testing.com', :username => @user[:username].upcase, :password => 'password'
+    assert_response 422
+  end
+
 end
