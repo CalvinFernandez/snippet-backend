@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   # List all categories
-  def all
+  def index
     render json: Category.all
   end
 

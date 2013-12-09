@@ -13,6 +13,7 @@ Snippet::Application.routes.draw do
   devise_for(:users, controllers: { sessions: 'sessions' }, :sign_out_via => [:post, :delete])
   
   resources :messages
+  resources :categories
 
   # Eventsource connection
   post "/eshq/socket", to: 'messages#open_update_connection'
