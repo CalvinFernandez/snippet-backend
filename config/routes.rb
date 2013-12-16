@@ -14,6 +14,9 @@ Snippet::Application.routes.draw do
   
   resources :messages
   resources :categories
+  
+  get "categories/:id/songs", :to => "categories#songs"
+
 
   # Eventsource connection
   post "/eshq/socket", to: 'messages#open_update_connection'
