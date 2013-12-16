@@ -38,6 +38,8 @@ class MessagesController < ApplicationController
       params[:user_id] = params[:contact_id]
       params[:contact_id] = user_id
       params[:sent] = !params[:sent]
+
+      params[:read] = false # Make sure that the receiver doesn't have a message that is read
       
       received = Message.create(message_params)
 
