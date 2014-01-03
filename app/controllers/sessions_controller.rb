@@ -9,6 +9,15 @@ class SessionsController < Devise::SessionsController
     if resource.valid_password?(params[:password])
       sign_in(:user, resource)
       resource.ensure_authentication_token!
+
+      if params[:gcm_id]
+        # if the user has passed in a gcm_id
+        # set the current user's gcm_id to be 
+        # this gcm id
+        resource.gcm_id = params[:gcm_id]
+        resource.save
+      end
+
       render :json => {:authentication_token => resource.authentication_token, :user => resource.as_json(except: [:created_at, :update_at])}, :status => 201
       return
     end
@@ -20,9 +29,11 @@ class SessionsController < Devise::SessionsController
     # Look up the user based on the provided email
     resource = User.find_for_database_authentication(email: params[:email])
 
-    # If the user resource is valid, erase the auth token
+    # If the user resource is valid, erase the auth token and the
+    # gcm id
     if resource
       resource.authentication_token = nil
+      resource.gcm_id = nil
       resource.save
     end
 
