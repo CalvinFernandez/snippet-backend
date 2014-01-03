@@ -9,15 +9,6 @@ class SessionsController < Devise::SessionsController
     if resource.valid_password?(params[:password])
       sign_in(:user, resource)
       resource.ensure_authentication_token!
-
-      if params[:gcm_id]
-        # if the user has passed in a gcm_id
-        # set the current user's gcm_id to be 
-        # this gcm id
-        resource.gcm_id = params[:gcm_id]
-        resource.save
-      end
-
       render :json => {:authentication_token => resource.authentication_token, :user => resource.as_json(except: [:created_at, :update_at])}, :status => 201
       return
     end
