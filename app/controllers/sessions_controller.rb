@@ -28,7 +28,7 @@ class SessionsController < Devise::SessionsController
       resource.save
     end
 
-    render :json => {}, :status => 204
+    render :json => {}, :status => 200
   end
 
   protected
